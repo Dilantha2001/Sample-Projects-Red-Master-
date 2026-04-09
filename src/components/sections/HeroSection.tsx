@@ -19,8 +19,11 @@ export const HeroSection = () => {
             className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain z-[5] opacity-90"
           />
 
-          {/* Main Prominent Branding Text strictly on top of the video area */}
-          <div className="absolute inset-0 flex items-center justify-center z-[4] select-none pointer-events-none item-end">
+          {/* Subtle Red Glow behind the person */}
+          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-1/3 h-1/2 bg-red-600/20 blur-[100px] rounded-full z-[3] pointer-events-none" />
+
+          {/* Main Prominent Branding Text strictly on top of the image area */}
+          <div className="absolute inset-0 flex items-center justify-center z-[4] select-none pointer-events-none">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

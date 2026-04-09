@@ -1,5 +1,7 @@
 import React from 'react';
 import { HeroSection } from './components/sections/HeroSection';
+import { ServicesSection } from './components/sections/ServicesSection';
+import { ProjectsSection } from './components/sections/ProjectsSection';
 import { EnterpriseSection } from './components/sections/EnterpriseSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
 import { FooterSection } from './components/sections/FooterSection';
@@ -7,8 +9,10 @@ import { Star } from 'lucide-react';
 
 export default function App() {
   return (
-    <div className="h-screen w-full overflow-y-auto snap-y snap-mandatory bg-black font-sans text-white scroll-smooth selection:bg-purple-500/30">
+    <div className="h-screen w-full overflow-y-auto snap-y snap-mandatory bg-black font-sans text-white scroll-smooth selection:bg-red-500/30">
       <HeroSection />
+      <ServicesSection />
+      <ProjectsSection />
       <EnterpriseSection />
       <TestimonialsSection />
       <FooterSection />
