@@ -3,6 +3,11 @@ import { motion } from 'motion/react';
 import { Section } from '../ui/Section';
 import { Star, Palette, Search, LayoutGrid, Globe } from 'lucide-react';
 
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Stage } from '@react-three/drei'
+import { Suspense } from 'react'
+import { Model } from '../../../Scene' // Ara generate unup component eka
+
 const services = [
   {
     title: "UI UX",
@@ -60,6 +65,18 @@ export const ServicesSection = () => {
           </p>
         </div>
 
+        <div className="w-full h-screen bg-black">
+          <Canvas shadows camera={{ position: [0, 0, 5], fov: 45 }}>
+            <Suspense fallback={null}>
+              {/* Sketchfab model wala lighting prashna ena nisa 'Stage' use karanna */}
+              <Stage environment="city" intensity={0.5}>
+                <Model />
+              </Stage>
+            </Suspense>
+            <OrbitControls autoRotate />
+          </Canvas>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
           {services.map((service, idx) => (
             <motion.div
@@ -74,7 +91,7 @@ export const ServicesSection = () => {
                   {service.icon}
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <h3 className="text-4xl font-black font-display tracking-tight uppercase leading-none">
                   {service.title} <br />
@@ -89,7 +106,7 @@ export const ServicesSection = () => {
 
               <div className="pt-4 overflow-hidden">
                 <div className="h-[2px] w-full bg-zinc-900 relative">
-                  <motion.div 
+                  <motion.div
                     initial={{ x: "-100%" }}
                     whileInView={{ x: "0%" }}
                     transition={{ delay: (idx * 0.1) + 0.5, duration: 1 }}
