@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Section } from '../ui/Section';
 import { Star } from 'lucide-react';
 

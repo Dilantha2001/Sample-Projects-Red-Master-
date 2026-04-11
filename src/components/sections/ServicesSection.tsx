@@ -1,12 +1,12 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Section } from '../ui/Section';
 import { Star, Palette, Search, LayoutGrid, Globe } from 'lucide-react';
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stage } from '@react-three/drei'
 import { Suspense } from 'react'
-import { Model } from '../../../Scene' // Ara generate unup component eka
+import { Model } from '../3d/Scene'
 
 const services = [
   {
@@ -65,10 +65,9 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="w-full h-screen bg-black">
+        <div className="w-full h-[60vh] relative">
           <Canvas shadows camera={{ position: [0, 0, 5], fov: 45 }}>
             <Suspense fallback={null}>
-              {/* Sketchfab model wala lighting prashna ena nisa 'Stage' use karanna */}
               <Stage environment="city" intensity={0.5}>
                 <Model />
               </Stage>
