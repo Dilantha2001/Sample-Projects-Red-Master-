@@ -43,8 +43,8 @@ export const ServicesSection = () => {
   return (
     <Section className="bg-black flex flex-col justify-center py-24 px-6 md:px-12">
       <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#dc2626_0%,transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#ea580c_0%,transparent_50%)]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-black" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-black" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -68,11 +68,11 @@ export const ServicesSection = () => {
         <div className="w-full h-[60vh] relative">
           <Canvas shadows camera={{ position: [0, 0, 5], fov: 45 }}>
             <Suspense fallback={null}>
-              <Stage environment="city" intensity={0.5}>
+              <Stage environment={null} intensity={1} contactShadow={false}>
                 <Model />
               </Stage>
             </Suspense>
-            <OrbitControls autoRotate />
+            <OrbitControls autoRotate enableZoom={false} />
           </Canvas>
         </div>
 
