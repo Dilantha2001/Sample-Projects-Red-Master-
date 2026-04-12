@@ -105,7 +105,7 @@ export const ServicesSection = () => {
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-zinc-900/50" />
 
           <div className="w-full h-full relative z-10">
-            <Canvas shadows camera={{ position: [0, 0, 5], fov: 45 }}>
+            <Canvas shadows camera={{ position: [0, 0, 5], fov: 10 }}>
               <Suspense fallback={null}>
                 <Stage environment={null} intensity={1} contactShadow={false}>
                   <Model />
