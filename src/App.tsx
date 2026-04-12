@@ -4,6 +4,7 @@ import { ServicesSection } from './components/sections/ServicesSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
 import { EnterpriseSection } from './components/sections/EnterpriseSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
+import { SupportTeamSection, ContactSection } from './components/sections/SupportSection';
 import { FooterSection } from './components/sections/FooterSection';
 import { Star } from 'lucide-react';
 
@@ -15,6 +16,8 @@ export default function App() {
       <ProjectsSection />
       <EnterpriseSection />
       <TestimonialsSection />
+      <SupportTeamSection />
+      <ContactSection />
       <FooterSection />
 
       {/* Fixed Decorative Star */}

@@ -115,15 +115,7 @@ export const ServicesSection = () => {
             </p>
           </div>
 
-          <div className="flex justify-end pt-12">
-            <div className="relative">
-              <PointCallout
-                side="right"
-                title="Refined Craftsmanship"
-                description="Blending timeless design with precision engineering for everyday digital excellence."
-              />
-            </div>
-          </div>
+          <div className="flex justify-end pt-12" />
         </div>
 
         {/* Central 3D Model Area */}
@@ -133,7 +125,7 @@ export const ServicesSection = () => {
           <div className="w-full h-full relative z-10">
             <Canvas shadows camera={{ position: [0, 0, 8], fov: 10 }}>
               <Suspense fallback={null}>
-                <Stage environment={null} intensity={1} contactShadow={false}>
+                <Stage environment={null} intensity={1} castShadow={false}>
                   <Model scale={15} />
                 </Stage>
               </Suspense>
@@ -147,6 +139,15 @@ export const ServicesSection = () => {
               side="left"
               title="Elegant Branding"
               description="Designed to combine precision, durability, and refined visual style for your enterprise."
+            />
+          </div>
+
+          {/* Right Callout - Near 3D Object */}
+          <div className="absolute right-[15%] top-[60%]">
+            <PointCallout
+              side="right"
+              title="Refined Craftsmanship"
+              description="Blending timeless design with precision engineering for everyday digital excellence."
             />
           </div>
 
