@@ -7,49 +7,91 @@ Source: https://sketchfab.com/3d-models/sun-model-b9e1dfd765984d9b8f998bd4a6be97
 Title: Sun Model
 */
 
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
-import * as THREE from 'three'
-import { GLTF } from 'three-stdlib'
+import React from "react";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Object_2?: THREE.Mesh
-    Object_3?: THREE.Mesh
-    Object_4?: THREE.Mesh
-    Object_5?: THREE.Mesh
-    Object_6?: THREE.Mesh
-    Object_7?: THREE.Mesh
-    Object_8?: THREE.Mesh
-    Object_9?: THREE.Mesh
-  }
+    Object_2?: THREE.Mesh;
+    Object_3?: THREE.Mesh;
+    Object_4?: THREE.Mesh;
+    Object_5?: THREE.Mesh;
+    Object_6?: THREE.Mesh;
+    Object_7?: THREE.Mesh;
+    Object_8?: THREE.Mesh;
+    Object_9?: THREE.Mesh;
+  };
   materials: {
-    material?: THREE.MeshStandardMaterial
-  }
-}
+    material?: THREE.MeshStandardMaterial;
+  };
+};
 
-export function Model(props: React.JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/moon/scene.gltf') as unknown as GLTFResult
-  
+export function Model(props: React.JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "/moon/scene.gltf",
+  ) as unknown as GLTFResult;
+
   // Safety check to prevent crash if model fails to load correctly
   if (!nodes) return null;
 
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        {nodes.Object_2 && <mesh geometry={nodes.Object_2.geometry} material={materials.material} />}
-        {nodes.Object_3 && <mesh geometry={nodes.Object_3.geometry} material={materials.material} />}
-        {nodes.Object_4 && <mesh geometry={nodes.Object_4.geometry} material={materials.material} />}
-        {nodes.Object_5 && <mesh geometry={nodes.Object_5.geometry} material={materials.material} />}
-        {nodes.Object_6 && <mesh geometry={nodes.Object_6.geometry} material={materials.material} />}
-        {nodes.Object_7 && <mesh geometry={nodes.Object_7.geometry} material={materials.material} />}
-        {nodes.Object_8 && <mesh geometry={nodes.Object_8.geometry} material={materials.material} />}
-        {nodes.Object_9 && <mesh geometry={nodes.Object_9.geometry} material={materials.material} />}
+      <group rotation={[-Math.PI / 8, 0, 0]}>
+        {nodes.Object_2 && (
+          <mesh
+            geometry={nodes.Object_2.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_3 && (
+          <mesh
+            geometry={nodes.Object_3.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_4 && (
+          <mesh
+            geometry={nodes.Object_4.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_5 && (
+          <mesh
+            geometry={nodes.Object_5.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_6 && (
+          <mesh
+            geometry={nodes.Object_6.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_7 && (
+          <mesh
+            geometry={nodes.Object_7.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_8 && (
+          <mesh
+            geometry={nodes.Object_8.geometry}
+            material={materials.material}
+          />
+        )}
+        {nodes.Object_9 && (
+          <mesh
+            geometry={nodes.Object_9.geometry}
+            material={materials.material}
+          />
+        )}
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/moon/scene.gltf')
+useGLTF.preload("/moon/scene.gltf");
 
-export default Model
+export default Model;
