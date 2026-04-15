@@ -42,7 +42,7 @@ export const HeroSection = () => {
           <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-1/3 h-1/2 bg-red-600/20 blur-[100px] rounded-full z-[3] pointer-events-none" />
 
           {/* Main Prominent Branding Text strictly on top of the image area */}
-          <div className="absolute inset-0 flex items-center justify-center z-[4] select-none pointer-events-none">
+          <div className="absolute inset-0 flex items-end justify-center z-[4] select-none pointer-events-none">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -70,26 +70,26 @@ export const HeroSection = () => {
 
       {/* Navigation */}
       <nav className="relative z-10 flex justify-center py-12">
-        <div className="flex items-center gap-4 text-sm font-medium tracking-wide text-zinc-300">
+        <div className="flex items-center gap-4 text-2xl font-medium tracking-wide text-zinc-300">
           <a href="#" className="hover:text-white transition-colors">
             Works
           </a>
-          <span className="text-zinc-700">|</span>
+          <span className="text-white">|</span>
           <a href="#" className="hover:text-white transition-colors">
             Services
           </a>
-          <span className="text-zinc-700">|</span>
+          <span className="text-white">|</span>
           <a href="#" className="hover:text-white transition-colors">
             About
           </a>
-          <span className="text-zinc-700">|</span>
+          <span className="text-white">|</span>
           <a href="#" className="hover:text-white transition-colors">
             Contact
           </a>
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24">
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24 bg-amber-400 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           {/* Left Column */}
           <motion.div
@@ -141,9 +141,9 @@ export const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="lg:text-right flex flex-col lg:items-end space-y-12"
+            className="lg:text-right flex flex-col lg:items-end space-y-12 "
           >
-            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
+            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black bg-red-500 leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
               <span className="block text-zinc-400/80">Creative</span>
               <span className="block text-zinc-500/80">Branding</span>
               <span className="block text-white">Studio</span>
@@ -187,7 +187,7 @@ export const HeroSection = () => {
             <span>Branding</span>
           </div>
           <div className="text-[10px] font-medium text-zinc-500 text-center">
-            © 2024
+            © 2026
           </div>
         </div>
       </footer>

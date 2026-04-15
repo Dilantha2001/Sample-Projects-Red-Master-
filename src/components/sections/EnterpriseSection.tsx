@@ -7,8 +7,7 @@ import PixelBlast from "../../reactbit/PixelBlast";
 export const EnterpriseSection = () => {
   return (
     <Section className="bg-black flex flex-col">
-      // Component inspired by github.com/zavalit/bayer-dithering-webgl-demo
-      <div style={{ width: "100%", height: "600px", position: "relative" }}>
+      <div className="absolute inset-0 z-0" style={{ height: "600px" }}>
         <PixelBlast
           variant="square"
           pixelSize={4}
@@ -30,7 +29,10 @@ export const EnterpriseSection = () => {
         />
       </div>
       {/* Flowing Light Effects */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div
+        className="absolute inset-0 z-1 overflow-hidden pointer-events-none"
+        style={{ height: "600px" }}
+      >
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -58,7 +60,10 @@ export const EnterpriseSection = () => {
           className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[30%] w-[80%] bg-red-600/10 blur-[100px] rounded-full"
         />
       </div>
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6">
+      <main
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6"
+        style={{ height: "600px" }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +97,10 @@ export const EnterpriseSection = () => {
         </motion.div>
       </main>
       {/* Partners Section */}
-      <footer className="relative z-10 py-12 px-12">
+      <footer
+        className="relative z-10 py-12 px-12"
+        style={{ marginTop: "600px" }}
+      >
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
           <div className="flex items-center gap-2">
             <span className="font-bold text-2xl tracking-tighter">
@@ -126,22 +134,6 @@ export const EnterpriseSection = () => {
         </div>
       </footer>
       {/* Flowing Wave at bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-[20%] pointer-events-none">
-        <svg viewBox="0 0 1440 320" className="w-full h-full opacity-20">
-          <motion.path
-            animate={{
-              d: [
-                "M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
-                "M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,186.7C672,203,768,181,864,160C960,139,1056,117,1152,122.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
-                "M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
-              ],
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            fill="#dc2626"
-            fillOpacity="1"
-          ></motion.path>
-        </svg>
-      </div>
     </Section>
   );
 };
