@@ -1,12 +1,15 @@
-import React from 'react';
-import { HeroSection } from './components/sections/HeroSection';
-import { ServicesSection } from './components/sections/ServicesSection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
-import { EnterpriseSection } from './components/sections/EnterpriseSection';
-import { TestimonialsSection } from './components/sections/TestimonialsSection';
-import { SupportTeamSection, ContactSection } from './components/sections/SupportSection';
-import { FooterSection } from './components/sections/FooterSection';
-import { Star } from 'lucide-react';
+import React from "react";
+import { HeroSection } from "./components/sections/HeroSection";
+import { ServicesSection } from "./components/sections/ServicesSection";
+import { ProjectsSection } from "./components/sections/ProjectsSection";
+import { EnterpriseSection } from "./components/sections/EnterpriseSection";
+import { TestimonialsSection } from "./components/sections/TestimonialsSection";
+import {
+  SupportTeamSection,
+  ContactSection,
+} from "./components/sections/SupportSection";
+import { FooterSection } from "./components/sections/FooterSection";
+import { Star } from "lucide-react";
 
 export default function App() {
   return (
@@ -19,10 +22,14 @@ export default function App() {
       <SupportTeamSection />
       <ContactSection />
       <FooterSection />
-
       {/* Fixed Decorative Star */}
       <div className="fixed bottom-8 right-8 z-50 text-zinc-300 opacity-60 pointer-events-none">
-        <Star size={32} fill="currentColor" strokeWidth={0} className="animate-pulse" />
+        <Star
+          size={32}
+          fill="currentColor"
+          strokeWidth={0}
+          className="animate-pulse"
+        />
       </div>
     </div>
   );

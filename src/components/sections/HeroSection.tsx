@@ -1,11 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Section } from '../ui/Section';
+import React from "react";
+import { motion } from "framer-motion";
+import { Section } from "../ui/Section";
+import PixelBlast from "../../reactbit/PixelBlast";
 
 export const HeroSection = () => {
   return (
     <Section className="bg-black">
-      {/* Background Image - Extending to top to remove the top black box */}
+      {/* PixelBlast Background */}
+      <div className="absolute inset-0 z-[1]">
+        <PixelBlast
+          color="#8B0000"
+          pixelSize={4}
+          patternScale={1.5}
+          patternDensity={0.8}
+          enableRipples={true}
+          rippleIntensityScale={0.8}
+          rippleThickness={0.15}
+          rippleSpeed={0.4}
+          edgeFade={0.3}
+          speed={0.3}
+          className={undefined}
+          style={undefined}
+        />
+      </div>
+
+      {/* Background Image */}
       <div className="absolute inset-0 z-2 bg-black flex items-start justify-center overflow-hidden">
         <div className="relative w-full h-[85vh] overflow-hidden">
           <img
@@ -38,27 +57,40 @@ export const HeroSection = () => {
 
       {/* Subtler Background Text Layers */}
       <div className="pointer-events-none absolute inset-0 z-[1] flex flex-col justify-around overflow-hidden opacity-[0.03] select-none">
-        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">BRANDING</span>
-        <span className="text-[25vw] font-black leading-none tracking-tighter self-end text-white">BRANDING</span>
-        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">BRANDING</span>
+        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
+          BRANDING
+        </span>
+        <span className="text-[25vw] font-black leading-none tracking-tighter self-end text-white">
+          BRANDING
+        </span>
+        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
+          BRANDING
+        </span>
       </div>
 
       {/* Navigation */}
       <nav className="relative z-10 flex justify-center py-12">
         <div className="flex items-center gap-4 text-sm font-medium tracking-wide text-zinc-300">
-          <a href="#" className="hover:text-white transition-colors">Works</a>
+          <a href="#" className="hover:text-white transition-colors">
+            Works
+          </a>
           <span className="text-zinc-700">|</span>
-          <a href="#" className="hover:text-white transition-colors">Services</a>
+          <a href="#" className="hover:text-white transition-colors">
+            Services
+          </a>
           <span className="text-zinc-700">|</span>
-          <a href="#" className="hover:text-white transition-colors">About</a>
+          <a href="#" className="hover:text-white transition-colors">
+            About
+          </a>
           <span className="text-zinc-700">|</span>
-          <a href="#" className="hover:text-white transition-colors">Contact</a>
+          <a href="#" className="hover:text-white transition-colors">
+            Contact
+          </a>
         </div>
       </nav>
 
       <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
-
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -71,23 +103,35 @@ export const HeroSection = () => {
                 UNLOCK YOUR BUSINESS POTENTIAL WITH OUR EXPERT SOLUTIONS.
               </h2>
               <p className="text-zinc-200 text-sm max-w-xs leading-relaxed drop-shadow-lg">
-                From innovative marketing strategies to operational excellence, we provide expert guidance to help your business grow, scale, and thrive.
+                From innovative marketing strategies to operational excellence,
+                we provide expert guidance to help your business grow, scale,
+                and thrive.
               </p>
             </div>
 
             <button className="group flex flex-col items-start gap-1">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-300 group-hover:text-white transition-colors">READ MORE</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-300 group-hover:text-white transition-colors">
+                READ MORE
+              </span>
               <div className="h-[1px] w-12 bg-white/50 group-hover:w-16 transition-all duration-300" />
             </button>
 
             <div className="pt-12 flex gap-16">
               <div className="space-y-1">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter">472+</div>
-                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">Expert solutions</div>
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter">
+                  472+
+                </div>
+                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
+                  Expert solutions
+                </div>
               </div>
               <div className="space-y-1">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter">597+</div>
-                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">Enterprises to Thrive</div>
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter">
+                  597+
+                </div>
+                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
+                  Enterprises to Thrive
+                </div>
               </div>
             </div>
           </motion.div>
@@ -107,14 +151,21 @@ export const HeroSection = () => {
 
             <div className="max-w-xs lg:text-right space-y-6">
               <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-lg">
-                From innovative marketing strategies to operational excellence, we provide expert guidance to help your business grow, scale, and thrive.
+                From innovative marketing strategies to operational excellence,
+                we provide expert guidance to help your business grow, scale,
+                and thrive.
               </p>
               <div className="space-y-1">
-                <div className="text-sm font-semibold tracking-tight">Your Partner in</div>
-                <div className="text-sm font-semibold tracking-tight">Business Growth</div>
+                <div className="text-sm font-semibold tracking-tight">
+                  Your Partner in
+                </div>
+                <div className="text-sm font-semibold tracking-tight">
+                  Business Growth
+                </div>
               </div>
               <p className="text-[10px] text-zinc-400 leading-relaxed italic">
-                / From innovative marketing strategies to operational excellence, we provide expert /
+                / From innovative marketing strategies to operational
+                excellence, we provide expert /
               </p>
             </div>
           </motion.div>
@@ -129,7 +180,7 @@ export const HeroSection = () => {
             <span className="text-zinc-800">|</span>
             <span>Website Design</span>
             <span className="text-zinc-800">|</span>
-            <span>Bussiness Developemnt</span>
+            <span>Business Development</span>
             <span className="text-zinc-800">|</span>
             <span>Ads Campaign</span>
             <span className="text-zinc-800">|</span>
