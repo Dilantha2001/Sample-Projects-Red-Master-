@@ -1,11 +1,64 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Section } from "../ui/Section";
 import PixelBlast from "../../reactbit/PixelBlast";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const HeroSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLImageElement>(null);
+  const personRef = useRef<HTMLImageElement>(null);
+  const brandingTextRef = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Parallax background scaling and moving down
+    gsap.to(bgRef.current, {
+      scale: 1.15,
+      yPercent: 12,
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    // Parallax person moving up slightly
+    gsap.to(personRef.current, {
+      yPercent: -8,
+      scale: 1.05,
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    // Branding text zooms into camera and fades out
+    gsap.to(brandingTextRef.current, {
+      scale: 1.6,
+      opacity: 0,
+      yPercent: -15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "70% top",
+        scrub: true,
+      },
+    });
+  }, { scope: containerRef });
+
   return (
-    <Section className="bg-black">
+    <Section id="hero" className="bg-black">
+      <div ref={containerRef} className="w-full h-full relative">
       {/* PixelBlast Background */}
       <div className="absolute inset-0 z-[1]">
         <PixelBlast
@@ -28,11 +81,13 @@ export const HeroSection = () => {
       <div className="absolute inset-0 z-2 bg-black flex items-start justify-center overflow-hidden">
         <div className="relative w-full h-[85vh] overflow-hidden">
           <img
+            ref={bgRef}
             src="./assets/background.png"
             alt="Hero Background"
             className="h-full w-full object-cover"
           />
           <img
+            ref={personRef}
             src="./assets/person.png"
             alt="Person Silhouette"
             className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain z-[5] opacity-90"
@@ -44,10 +99,11 @@ export const HeroSection = () => {
           {/* Main Prominent Branding Text strictly on top of the image area */}
           <div className="absolute inset-0 flex items-end justify-center z-[4] select-none pointer-events-none">
             <motion.span
+              ref={brandingTextRef}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-[18vw] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+              className="text-[18vw] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] inline-block"
             >
               BRANDING
             </motion.span>
@@ -191,6 +247,7 @@ export const HeroSection = () => {
           </div>
         </div>
       </footer>
+      </div>
     </Section>
   );
 };

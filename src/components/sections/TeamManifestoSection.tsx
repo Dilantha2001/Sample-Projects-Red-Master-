@@ -61,7 +61,7 @@ const capabilities: CapabilityCard[] = [
 
 export const TeamManifestoSection = () => {
   return (
-    <Section className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
+    <Section id="manifesto" className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
       
       {/* Background Decorative Matrix Overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.03)_0%,transparent_80%)] pointer-events-none" />
@@ -97,9 +97,16 @@ export const TeamManifestoSection = () => {
                   borderColor: "rgba(239, 68, 68, 0.4)",
                   boxShadow: "0 15px 35px rgba(220,38,38,0.1)"
                 }}
-                initial={{ opacity: 0, scale: 0.9, rotate: rot, x: offset }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                initial={{ opacity: 0, scale: 0.8, rotate: 0, x: 0 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: rot, x: offset }}
+                viewport={{ once: false, margin: "-10% 0px" }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 70, 
+                  damping: 12, 
+                  mass: 0.8,
+                  delay: idx * 0.12 
+                }}
                 className="absolute w-[220px] md:w-[250px] h-[310px] md:h-[340px] rounded-2xl border border-zinc-900 bg-zinc-950/70 backdrop-blur-xl p-5 flex flex-col justify-between cursor-pointer select-none transition-all duration-300"
                 style={{ 
                   originY: 1, 

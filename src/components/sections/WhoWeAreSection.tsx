@@ -140,7 +140,7 @@ export const WhoWeAreSection = () => {
   }, [activePillarId]);
 
   return (
-    <Section className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
+    <Section id="whoweare" className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
       
       {/* Background Decorative Mesh Grids */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />

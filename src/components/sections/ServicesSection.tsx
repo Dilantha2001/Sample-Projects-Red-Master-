@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Section } from "../ui/Section";
 import { Star } from "lucide-react";
@@ -45,8 +45,10 @@ const PointCallout = ({
   side?: "left" | "right";
 }) => (
   <motion.div
-    initial={{ opacity: 0, x: side === "left" ? -40 : 40 }}
-    whileInView={{ opacity: 1, x: 0 }}
+    initial={{ opacity: 0, x: side === "left" ? -60 : 60, scale: 0.9 }}
+    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+    viewport={{ once: false, margin: "-10% 0px" }}
+    transition={{ type: "spring", stiffness: 100, damping: 15 }}
     className={`absolute z-20 max-w-[200px] ${side === "left" ? "text-left" : "text-left"}`}
   >
     <div className="flex items-start gap-4">
@@ -54,7 +56,7 @@ const PointCallout = ({
         <div className="mt-1 relative">
           <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]" />
           <svg className="absolute top-1.5 left-[-60px] w-[60px] h-[40px] overflow-visible">
-            <line
+            <motion.line
               x1="60"
               y1="0"
               x2="0"
@@ -62,6 +64,9 @@ const PointCallout = ({
               stroke="white"
               strokeWidth="1"
               strokeOpacity="0.3"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
             />
           </svg>
         </div>
@@ -76,7 +81,7 @@ const PointCallout = ({
         <div className="mt-1 relative">
           <div className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_white]" />
           <svg className="absolute top-1.5 left-3 w-[60px] h-[40px] overflow-visible">
-            <line
+            <motion.line
               x1="0"
               y1="0"
               x2="60"
@@ -84,6 +89,9 @@ const PointCallout = ({
               stroke="white"
               strokeWidth="1"
               strokeOpacity="0.3"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
             />
           </svg>
         </div>
@@ -92,9 +100,41 @@ const PointCallout = ({
   </motion.div>
 );
 
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+
+const ScrollRotatedModel = () => {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      const section = document.getElementById("services");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const totalDist = viewportHeight + rect.height;
+        const currentDist = viewportHeight - rect.top;
+        const rawProgress = currentDist / totalDist;
+        const progress = Math.max(0, Math.min(1, rawProgress));
+
+        // Spin model based on scroll + continuous time rotation
+        groupRef.current.rotation.y = (progress * Math.PI * 4.5) + (performance.now() * 0.00025);
+        // Tilt model based on scroll
+        groupRef.current.rotation.x = -Math.PI / 10 + progress * (Math.PI / 5);
+      }
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      <Model scale={19} />
+    </group>
+  );
+};
+
 export const ServicesSection = () => {
   return (
-    <Section className="bg-black flex flex-col justify-between py-10 px-6 md:px-12 overflow-hidden">
+    <Section id="services" className="bg-black flex flex-col justify-between py-10 px-6 md:px-12 overflow-hidden">
       {/* Background Lighting */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-black" />
@@ -126,10 +166,10 @@ export const ServicesSection = () => {
             <Canvas shadows camera={{ position: [0, 0, 8], fov: 10 }}>
               <Suspense fallback={null}>
                 <Stage environment={null} intensity={1} castShadow={false}>
-                  <Model scale={19} />
+                  <ScrollRotatedModel />
                 </Stage>
               </Suspense>
-              <OrbitControls autoRotate enableZoom={false} enablePan={false} />
+              <OrbitControls enableZoom={false} enablePan={false} />
             </Canvas>
           </div>
 

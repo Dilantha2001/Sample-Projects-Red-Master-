@@ -91,7 +91,7 @@ export const SupportTeamSection = () => {
   };
 
   return (
-    <Section className="bg-black flex flex-col justify-center relative min-h-screen py-16 overflow-hidden snap-start">
+    <Section id="support" className="bg-black flex flex-col justify-center relative min-h-screen py-16 overflow-hidden snap-start">
       {/* High-end Subtle Red Glows */}
       <div className="absolute top-1/3 left-10 w-[40%] h-[40%] bg-red-900/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[50%] h-[50%] bg-orange-950/5 blur-[150px] rounded-full pointer-events-none" />
@@ -331,7 +331,7 @@ export const SupportTeamSection = () => {
 
                   <div className="pt-2">
                     <a
-                      href="#contact-sales"
+                      href="#contact"
                       className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white group hover:text-red-500 transition-colors cursor-pointer"
                     >
                       Connect with {activeMember.name.split(" ")[0]}
@@ -354,7 +354,7 @@ export const SupportTeamSection = () => {
 
 export const ContactSection = () => {
   return (
-    <Section id="contact-sales" className="bg-black flex items-center min-h-screen py-16 snap-start relative">
+    <Section id="contact" className="bg-black flex items-center min-h-screen py-16 snap-start relative">
       {/* Dynamic Background Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-red-950/5 blur-[180px] rounded-full pointer-events-none" />
 

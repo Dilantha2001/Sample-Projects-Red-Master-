@@ -6,7 +6,7 @@ import PixelBlast from "../../reactbit/PixelBlast";
 
 export const EnterpriseSection = () => {
   return (
-    <Section className="bg-black flex flex-col">
+    <Section id="enterprise" className="bg-black flex flex-col">
       <div className="absolute inset-0 z-0" style={{ height: "600px" }}>
         <PixelBlast
           variant="square"

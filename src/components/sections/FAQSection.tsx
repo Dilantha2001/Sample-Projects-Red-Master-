@@ -35,7 +35,7 @@ export const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <Section className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
+    <Section id="faq" className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
       
       {/* Background Grid Lines */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:5rem_5rem] pointer-events-none" />

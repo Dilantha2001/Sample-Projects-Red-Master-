@@ -16,6 +16,7 @@ import { TestimonialsSection } from "./components/sections/TestimonialsSection";
 import { SupportTeamSection, ContactSection } from "./components/sections/SupportSection";
 import { FooterSection } from "./components/sections/FooterSection";
 import { Star } from "lucide-react";
+import { ScrollNav } from "./components/ui/ScrollNav";
 
 // Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -82,6 +83,9 @@ export default function App() {
 
       {/* Premium Minimal Progress Line */}
       <div className="progress-bar fixed top-0 left-0 right-0 z-[100] h-[2px] bg-gradient-to-r from-zinc-700 via-zinc-400 to-zinc-700 origin-left scale-x-0" />
+
+      {/* Premium Scroll-Triggered HUD Navigation */}
+      <ScrollNav />
 
       {/* Sections Layout */}
       <main className="relative z-10 flex flex-col">

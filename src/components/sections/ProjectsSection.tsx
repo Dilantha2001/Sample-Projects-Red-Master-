@@ -26,7 +26,7 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <Section className="bg-black py-24 px-6 md:px-12 flex flex-col justify-center">
+    <Section id="projects" className="bg-black py-24 px-6 md:px-12 flex flex-col justify-center">
       {/* Background Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,#dc26260a_0%,transparent_70%)] pointer-events-none" />
 
@@ -52,9 +52,17 @@ export const ProjectsSection = () => {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2, duration: 0.8 }}
+              initial={{ opacity: 0, y: 70, scale: 0.95, rotateX: 10, rotateY: idx === 0 ? 5 : -5 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0, rotateY: 0 }}
+              viewport={{ once: false, margin: "-10% 0px" }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 80, 
+                damping: 15, 
+                mass: 1,
+                delay: idx * 0.15 
+              }}
+              style={{ transformStyle: "preserve-3d", perspective: 1000 }}
               className="group relative h-[500px] rounded-[32px] overflow-hidden bg-zinc-900/20 border border-zinc-800/50 hover:border-red-500/30 transition-all duration-500"
             >
               {/* Project Image Background */}
