@@ -45,15 +45,66 @@ export default function App() {
 
     gsap.ticker.lagSmoothing(0);
 
+    // Call ScrollTrigger.refresh() after a short delay to ensure correct calculations
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
     return () => {
+      clearTimeout(timer);
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
     };
   }, []);
 
-  // 2. Premium Interactions with GSAP
+  // 2. Premium Interactions & Hybrid Pinned Middle Showcase Transitions
   useGSAP(() => {
-    // Page top micro progress bar - Luxury sites වල දකින සියුම් design එකක්
+    gsap.registerPlugin(ScrollTrigger);
+
+    const showcasePanels = gsap.utils.toArray(".showcase-panel") as HTMLElement[];
+
+    // Pre-position showcase panels:
+    // Panel 1 (Who We Are) is base and fully visible.
+    // Panel 2 (Team Manifesto) slides in from LEFT.
+    gsap.set(showcasePanels[1], {
+      xPercent: -100,
+    });
+    // Panel 3 (Testimonials) slides in from the right as a solid sheet
+    gsap.set(showcasePanels[2], {
+      xPercent: 100,
+    });
+
+    // Pinned Middle Showcase Timeline with spacing scroll buffers to prevent overlaps
+    const showcaseTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".panels-container",
+        start: "top top",
+        end: () => `+=${showcasePanels.length * 120}%`, // larger scroll area for spacious, smooth experience
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+
+    // 1. Team Manifesto slides in from LEFT
+    showcaseTl.to(showcasePanels[1], {
+      xPercent: 0,
+      ease: "power1.inOut",
+    });
+
+    // Scroll pause buffer - keeps Team Manifesto settled and completely visible
+    showcaseTl.to({}, { duration: 0.8 });
+
+    // 2. Testimonials slides in from the right as a solid overlay
+    showcaseTl.to(showcasePanels[2], {
+      xPercent: 0,
+      ease: "power1.inOut",
+    });
+
+    // Scroll pause buffer - keeps Testimonials settled and completely visible
+    showcaseTl.to({}, { duration: 0.8 });
+
+    // Page top micro progress bar linked to total page scroll height
     gsap.to(".progress-bar", {
       scaleX: 1,
       ease: "none",
@@ -88,15 +139,28 @@ export default function App() {
       <ScrollNav />
 
       {/* Sections Layout */}
-      <main className="relative z-10 flex flex-col">
+      <main className="relative z-10 block">
+        {/* Normal scrolling sections at top */}
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />
         <EnterpriseSection />
-        <WhoWeAreSection />
+
+        {/* Pinned Showcase container in the middle */}
+        <div className="panels-container relative w-full h-screen overflow-hidden z-10 bg-black">
+          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-10">
+            <WhoWeAreSection />
+          </div>
+          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-[11]">
+            <TeamManifestoSection />
+          </div>
+          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-[12]">
+            <TestimonialsSection />
+          </div>
+        </div>
+
+        {/* Normal scrolling sections continue below */}
         <FAQSection />
-        <TeamManifestoSection />
-        <TestimonialsSection />
         <SupportTeamSection />
         <ContactSection />
         <FooterSection />

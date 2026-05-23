@@ -21,40 +21,63 @@ export const ScrollNav: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("hero");
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-45% 0px -45% 0px", // Trigger when the section occupies the center of the viewport
-      threshold: 0,
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+      const progress = window.scrollY / scrollHeight;
+      
+      // Total sections in DOM panel stack: 11 panels (indices 0 to 10)
+      const totalPanelsCount = 11;
+      const activeIndex = Math.min(
+        totalPanelsCount - 1,
+        Math.max(0, Math.round(progress * (totalPanelsCount - 1)))
+      );
+
+      // Map absolute panel index to nearest HUD dot ID
+      const indexToIdMap = [
+        "hero",         // 0 -> HeroSection (normal scroll)
+        "services",     // 1 -> ServicesSection (normal scroll)
+        "projects",     // 2 -> ProjectsSection (normal scroll)
+        "enterprise",   // 3 -> EnterpriseSection (normal scroll)
+        "whoweare",     // 4 -> WhoWeAreSection (pinned showcase starts)
+        "manifesto",    // 5 -> TeamManifestoSection (pinned left slide-in)
+        "manifesto",    // 6 -> TestimonialsSection (pinned mask reveal overlay)
+        "faq",          // 7 -> FAQSection (normal scroll resumes)
+        "support",      // 8 -> SupportTeamSection (normal scroll)
+        "contact",      // 9 -> ContactSection (normal scroll)
+        "contact",      // 10 -> FooterSection (normal scroll)
+      ];
+
+      setActiveSection(indexToIdMap[activeIndex] || "hero");
     };
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run initial scroll update
+    handleScroll();
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    navItems.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      navItems.forEach((item) => {
-        const el = document.getElementById(item.id);
-        if (el) observer.unobserve(el);
-      });
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    const idToPanelIndexMap: Record<string, number> = {
+      hero: 0,
+      services: 1,
+      projects: 2,
+      enterprise: 3,
+      whoweare: 4,
+      manifesto: 5,
+      faq: 7,
+      support: 8,
+      contact: 9,
+    };
+
+    const targetIdx = idToPanelIndexMap[id] !== undefined ? idToPanelIndexMap[id] : 0;
+    
+    // Smooth scroll using window.scrollTo (Lenis automatically smooths this out!)
+    window.scrollTo({
+      top: targetIdx * window.innerHeight,
+      behavior: "smooth"
+    });
   };
 
   const activeIndex = navItems.findIndex((item) => item.id === activeSection);
