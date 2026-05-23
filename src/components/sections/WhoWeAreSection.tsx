@@ -151,11 +151,11 @@ export const WhoWeAreSection = () => {
 
       {/* Header Margin Spacer */}
       <div className="pt-8 md:pt-12 px-6 md:px-12 w-full max-w-7xl mx-auto relative z-10 flex justify-between items-center border-b border-zinc-900/60 pb-4">
-        <span className="text-[8px] font-black tracking-[0.3em] text-zinc-500 uppercase">
+        <span className="text-xs font-black tracking-[0.25em] text-zinc-500 uppercase">
           WHO WE ARE • CORPORATE MANIFESTO
         </span>
-        <span className="text-[8px] font-black tracking-[0.2em] text-red-500 uppercase flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-ping" />
+        <span className="text-xs font-black tracking-[0.15em] text-red-500 uppercase flex items-center gap-1.5">
+          <span className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
           ACTIVE ENGINE STATE: PRESTIGE
         </span>
       </div>
@@ -171,7 +171,7 @@ export const WhoWeAreSection = () => {
           className="space-y-6 md:space-y-8 flex flex-col justify-center h-full"
         >
           <div className="space-y-4">
-            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-[9px] font-bold tracking-[0.2em] text-red-500 uppercase">
+            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-xs font-black tracking-[0.2em] text-red-500 uppercase">
               GENESIS CONSORTIUM
             </div>
             
@@ -182,13 +182,13 @@ export const WhoWeAreSection = () => {
               </span>
             </h2>
             
-            <p className="text-zinc-400 text-xs md:text-sm leading-relaxed max-w-lg font-sans font-medium">
+            <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-lg font-sans font-medium">
               We merge rigorous cryptographic security with premium design craftsmanship. We don't just build platforms—we forge bespoke digital systems that represent high prestige, ultimate longevity, and deterministic performance.
             </p>
           </div>
 
           {/* Interactive Pillars Selectors */}
-          <div className="space-y-3.5 pt-2">
+          <div className="space-y-4 pt-2">
             {pillars.map((pillar) => {
               const isSelected = activePillarId === pillar.id;
               return (
@@ -196,7 +196,7 @@ export const WhoWeAreSection = () => {
                   key={pillar.id}
                   onMouseEnter={() => setActivePillarId(pillar.id)}
                   onClick={() => setActivePillarId(pillar.id)}
-                  className={`group p-4 rounded-xl border transition-all duration-500 cursor-pointer select-none ${
+                  className={`group p-5 rounded-xl border transition-all duration-500 cursor-pointer select-none ${
                     isSelected
                       ? "bg-zinc-950/60 border-red-500/30 shadow-[0_0_25px_rgba(220,38,38,0.06)]"
                       : "bg-zinc-900/10 border-zinc-900/60 hover:bg-zinc-950/30 hover:border-zinc-800"
@@ -204,18 +204,18 @@ export const WhoWeAreSection = () => {
                 >
                   <div className="flex justify-between items-center">
                     <span
-                      className={`text-[10px] font-black tracking-widest font-display transition-colors duration-300 ${
-                        isSelected ? "text-red-500" : "text-zinc-500 group-hover:text-zinc-400"
+                      className={`text-xs font-black tracking-widest font-display transition-colors duration-300 ${
+                        isSelected ? "text-red-500" : "text-zinc-400 group-hover:text-zinc-300"
                       }`}
                     >
                       {pillar.label}
                     </span>
                     <ArrowRight
-                      size={12}
+                      size={14}
                       className={`transition-all duration-300 ${
                         isSelected
                           ? "text-red-500 translate-x-1"
-                          : "text-zinc-700 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:text-zinc-500"
+                          : "text-zinc-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:text-zinc-500"
                       }`}
                     />
                   </div>
@@ -225,12 +225,12 @@ export const WhoWeAreSection = () => {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.3 }}
-                      className="mt-2.5 space-y-1.5"
+                      className="mt-3 space-y-1.5"
                     >
-                      <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+                      <h4 className="text-sm font-black text-white uppercase tracking-wider">
                         {pillar.title}
                       </h4>
-                      <p className="text-[10px] text-zinc-400 leading-normal font-sans">
+                      <p className="text-xs text-zinc-400 leading-relaxed font-sans">
                         {pillar.desc}
                       </p>
                     </motion.div>
@@ -246,7 +246,7 @@ export const WhoWeAreSection = () => {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full h-[400px] md:h-[450px] lg:h-[480px] rounded-3xl border border-zinc-900/80 bg-gradient-to-br from-zinc-950/70 to-zinc-950/20 backdrop-blur-xl p-5 md:p-6 overflow-hidden flex flex-col justify-between"
+          className="relative w-full h-[430px] md:h-[480px] lg:h-[510px] rounded-3xl border border-zinc-900/80 bg-gradient-to-br from-zinc-950/70 to-zinc-950/20 backdrop-blur-xl p-5 md:p-6 overflow-hidden flex flex-col justify-between"
         >
           {/* Glass Top Rim Glare */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
@@ -341,12 +341,12 @@ export const WhoWeAreSection = () => {
           {/* Telemetry Header */}
           <div className="relative z-10 flex justify-between items-center border-b border-zinc-900 pb-3">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[10px] font-black tracking-widest text-white uppercase font-display">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-xs font-black tracking-widest text-white uppercase font-display">
                 PRESTIGE METRICS
               </span>
             </div>
-            <div className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-[8px] font-bold text-zinc-400">
+            <div className="px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-bold text-zinc-400">
               LEDGER SYNC: ONLINE
             </div>
           </div>
@@ -362,10 +362,10 @@ export const WhoWeAreSection = () => {
                 transition={{ duration: 0.4 }}
                 className="p-3.5 rounded-xl bg-zinc-950/80 border border-zinc-900 flex flex-col justify-between"
               >
-                <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-wider leading-none">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider leading-none">
                   {activePillar.techMetrics.primaryName}
                 </span>
-                <span className="text-sm font-black text-white mt-1 uppercase font-display">
+                <span className="text-base font-black text-white mt-1.5 uppercase font-display">
                   {activePillar.techMetrics.primaryVal}
                 </span>
               </motion.div>
@@ -380,10 +380,10 @@ export const WhoWeAreSection = () => {
                 transition={{ duration: 0.4, delay: 0.05 }}
                 className="p-3.5 rounded-xl bg-zinc-950/80 border border-zinc-900 flex flex-col justify-between"
               >
-                <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-wider leading-none">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider leading-none">
                   {activePillar.techMetrics.secondaryName}
                 </span>
-                <span className="text-sm font-black text-white mt-1 uppercase font-display">
+                <span className="text-base font-black text-white mt-1.5 uppercase font-display">
                   {activePillar.techMetrics.secondaryVal}
                 </span>
               </motion.div>
@@ -398,10 +398,10 @@ export const WhoWeAreSection = () => {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="p-3.5 rounded-xl bg-zinc-950/80 border border-zinc-900 flex flex-col justify-between"
               >
-                <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-wider leading-none">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider leading-none">
                   {activePillar.techMetrics.tertiaryName}
                 </span>
-                <span className="text-[10px] font-black text-white mt-1 uppercase font-display leading-tight truncate">
+                <span className="text-xs font-black text-white mt-1.5 uppercase font-display leading-tight truncate">
                   {activePillar.techMetrics.tertiaryVal}
                 </span>
               </motion.div>
@@ -409,24 +409,24 @@ export const WhoWeAreSection = () => {
           </div>
 
           {/* Cryptographic Node Information Dashboard */}
-          <div className="relative z-10 p-3.5 rounded-xl bg-zinc-950/40 border border-zinc-900/60 backdrop-blur-md space-y-2">
+          <div className="relative z-10 p-4 rounded-xl bg-zinc-950/40 border border-zinc-900/60 backdrop-blur-md space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-[8px] font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1">
-                <Cpu size={10} className="text-red-500" />
+              <span className="text-xs font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                <Cpu size={12} className="text-red-500" />
                 SYSTEM ALLOCATION RAILS
               </span>
-              <span className="text-[8px] font-black tracking-widest text-red-500 uppercase">
+              <span className="text-xs font-black tracking-widest text-red-500 uppercase">
                 {activePillar.techMetrics.status}
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-[9px] font-sans text-zinc-400 font-medium">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs font-sans text-zinc-400 font-medium">
               <div className="flex justify-between border-b border-zinc-900 pb-1">
                 <span>GATEWAY PORT:</span>
                 <span className="font-bold text-white font-mono">0x4B3C</span>
               </div>
               <div className="flex justify-between border-b border-zinc-900 pb-1">
                 <span>PROTOCOL:</span>
-                <span className="font-bold text-white uppercase">VETHOR.L2</span>
+                <span className="font-bold text-white uppercase font-sans">VETHOR.L2</span>
               </div>
               <div className="flex justify-between">
                 <span>NODE SIGNATURE:</span>
@@ -434,17 +434,17 @@ export const WhoWeAreSection = () => {
               </div>
               <div className="flex justify-between">
                 <span>SLA QUALITY:</span>
-                <span className="font-bold text-white">99.998%</span>
+                <span className="font-bold text-white font-sans">99.998%</span>
               </div>
             </div>
           </div>
 
           {/* Micro Terminal Live Decrypt Ticker */}
-          <div className="relative z-10 flex-1 min-h-[90px] rounded-lg bg-black border border-zinc-900/80 p-3 font-mono text-[8px] leading-relaxed text-zinc-400 overflow-hidden flex flex-col justify-end mt-4">
-            <div className="absolute top-1.5 left-2 text-[7px] text-zinc-600 font-bold uppercase tracking-widest flex items-center gap-1 pointer-events-none">
-              <Server size={8} /> LIVE BLOCK LOGS
+          <div className="relative z-10 flex-1 min-h-[110px] rounded-lg bg-black border border-zinc-900/80 p-3.5 font-mono text-xs leading-relaxed text-zinc-400 overflow-hidden flex flex-col justify-end mt-4">
+            <div className="absolute top-2 left-3 text-[10px] text-zinc-500 font-bold uppercase tracking-widest flex items-center gap-1.5 pointer-events-none">
+              <Server size={10} /> LIVE BLOCK LOGS
             </div>
-            <div className="space-y-0.5 select-all overflow-hidden flex flex-col justify-end">
+            <div className="space-y-0.5 select-all overflow-hidden flex flex-col justify-end pt-4">
               {tickerLogs.map((log, idx) => (
                 <motion.div
                   key={`${activePillarId}-${idx}-${log.substring(0, 8)}`}
@@ -467,10 +467,10 @@ export const WhoWeAreSection = () => {
 
       {/* Bottom Footer Border Margin Spacer */}
       <div className="pb-8 px-6 md:px-12 w-full max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-3 border-t border-zinc-900/60 pt-4 text-center md:text-left select-none">
-        <span className="text-[8px] font-black uppercase tracking-[0.25em] text-zinc-600">
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-zinc-600">
           CRAFTED BY DECENTRALIZED COGNIZANCE © 2026
         </span>
-        <div className="flex items-center gap-6 text-[8px] font-bold text-zinc-500 uppercase tracking-widest">
+        <div className="flex items-center gap-6 text-xs font-bold text-zinc-500 uppercase tracking-widest">
           <span className="hover:text-red-500 transition-colors cursor-default">VISION</span>
           <span>•</span>
           <span className="hover:text-red-500 transition-colors cursor-default">PRECISION</span>

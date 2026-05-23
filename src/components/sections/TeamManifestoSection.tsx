@@ -69,11 +69,11 @@ export const TeamManifestoSection = () => {
 
       {/* Top Rim Glowing Header */}
       <div className="pt-8 md:pt-12 px-6 md:px-12 w-full max-w-7xl mx-auto relative z-10 flex justify-between items-center border-b border-zinc-900/60 pb-4">
-        <span className="text-[8px] font-black tracking-[0.3em] text-zinc-500 uppercase">
+        <span className="text-xs font-black tracking-[0.25em] text-zinc-500 uppercase">
           Ecosystem Directory • Consortium Members & Capabilities
         </span>
-        <span className="text-[8px] font-black tracking-[0.2em] text-red-500 uppercase flex items-center gap-1.5">
-          <Shield size={10} className="text-red-500" />
+        <span className="text-xs font-black tracking-[0.15em] text-red-500 uppercase flex items-center gap-1.5">
+          <Shield size={12} className="text-red-500" />
           EST. 2018 GENESIS NODE #001
         </span>
       </div>
@@ -82,7 +82,7 @@ export const TeamManifestoSection = () => {
       <div className="flex-1 max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 py-6 overflow-hidden">
         
         {/* Left Side: Fanning Team Synergy Grid */}
-        <div className="relative w-full h-[320px] md:h-[360px] flex items-center justify-center">
+        <div className="relative w-full h-[360px] md:h-[400px] flex items-center justify-center">
           {teamMembers.map((member, idx) => {
             const rot = (idx - 1) * 6; // Angle fan
             const offset = (idx - 1) * 45; // X-axis fan
@@ -100,7 +100,7 @@ export const TeamManifestoSection = () => {
                 initial={{ opacity: 0, scale: 0.9, rotate: rot, x: offset }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="absolute w-[210px] md:w-[240px] h-[280px] md:h-[310px] rounded-2xl border border-zinc-900 bg-zinc-950/70 backdrop-blur-xl p-5 flex flex-col justify-between cursor-pointer select-none transition-all duration-300"
+                className="absolute w-[220px] md:w-[250px] h-[310px] md:h-[340px] rounded-2xl border border-zinc-900 bg-zinc-950/70 backdrop-blur-xl p-5 flex flex-col justify-between cursor-pointer select-none transition-all duration-300"
                 style={{ 
                   originY: 1, 
                   zIndex: 10 + idx,
@@ -108,7 +108,7 @@ export const TeamManifestoSection = () => {
               >
                 {/* Micro Tech Banner */}
                 <div className="flex justify-between items-center border-b border-zinc-900 pb-2">
-                  <span className="text-[7px] font-black text-red-500 uppercase tracking-widest">
+                  <span className="text-xs font-black text-red-500 uppercase tracking-widest">
                     {member.code}
                   </span>
                   <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
@@ -126,13 +126,13 @@ export const TeamManifestoSection = () => {
 
                 {/* Info Text */}
                 <div className="space-y-1">
-                  <span className="text-[7px] font-black text-zinc-500 uppercase tracking-wider">
+                  <span className="text-xs font-black text-zinc-500 uppercase tracking-wider">
                     {member.role}
                   </span>
-                  <h4 className="text-xs font-black text-white uppercase tracking-wide font-display leading-tight">
+                  <h4 className="text-sm font-black text-white uppercase tracking-wide font-display leading-tight">
                     {member.name}
                   </h4>
-                  <p className="text-[8px] text-zinc-400 font-sans leading-normal line-clamp-2">
+                  <p className="text-xs text-zinc-400 font-sans leading-normal line-clamp-2">
                     {member.details}
                   </p>
                 </div>
@@ -149,8 +149,8 @@ export const TeamManifestoSection = () => {
           className="space-y-6 flex flex-col justify-center h-full"
         >
           <div className="space-y-4">
-            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-[9px] font-black tracking-[0.25em] text-red-500 uppercase">
-              SUVEREIGN ALLIANCE
+            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-xs font-black tracking-[0.2em] text-red-500 uppercase">
+              SOVEREIGN ALLIANCE
             </div>
             
             <h2 className="text-3xl md:text-5xl font-black font-display uppercase tracking-tighter leading-none">
@@ -160,7 +160,7 @@ export const TeamManifestoSection = () => {
               </span>
             </h2>
             
-            <p className="text-zinc-400 text-xs md:text-sm leading-relaxed max-w-lg font-sans font-medium">
+            <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-lg font-sans font-medium">
               We merge computational precision with elite creative mastery. Our mandate is simple: to form high-integrity architectural partnerships that secure absolute decentralized data validation, extreme render performances, and permanent trust.
             </p>
           </div>
@@ -168,10 +168,10 @@ export const TeamManifestoSection = () => {
           <div>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-[10px] font-black uppercase tracking-widest text-white hover:scale-105 transition-transform shadow-[0_0_20px_rgba(220,38,38,0.35)] cursor-pointer select-none"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-xs font-black uppercase tracking-widest text-white hover:scale-105 transition-transform shadow-[0_0_20px_rgba(220,38,38,0.35)] cursor-pointer select-none"
             >
               Bridge Consensus
-              <ArrowUpRight size={10} />
+              <ArrowUpRight size={12} />
             </a>
           </div>
         </motion.div>
@@ -182,12 +182,12 @@ export const TeamManifestoSection = () => {
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-12 relative z-10">
         
         {/* Small Row Header */}
-        <div className="flex items-center gap-4 mb-5 border-t border-zinc-900 pt-6">
-          <span className="text-[8px] font-black text-red-500 uppercase tracking-[0.3em]">
+        <div className="flex items-center gap-4 mb-5 border-t border-t-zinc-900 pt-6">
+          <span className="text-xs font-black text-red-500 uppercase tracking-[0.25em]">
             CAPABILITIES REGISTER
           </span>
           <div className="h-[1px] flex-1 bg-zinc-900/60" />
-          <span className="text-[8px] font-bold text-zinc-500 uppercase tracking-widest">
+          <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">
             WHAT WE BRING TO THE TABLE
           </span>
         </div>
@@ -210,14 +210,14 @@ export const TeamManifestoSection = () => {
               {/* Text Data */}
               <div className="flex-1 space-y-1">
                 <div className="flex justify-between items-baseline">
-                  <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
+                  <h4 className="text-xs md:text-sm font-black text-white uppercase tracking-wider font-display">
                     {cap.title}
                   </h4>
-                  <span className="text-[8px] font-bold text-zinc-500 font-mono">
+                  <span className="text-xs font-bold text-zinc-500 font-mono">
                     {cap.number}
                   </span>
                 </div>
-                <p className="text-[10px] text-zinc-400 leading-relaxed font-sans font-medium">
+                <p className="text-xs text-zinc-400 leading-relaxed font-sans font-medium">
                   {cap.desc}
                 </p>
               </div>

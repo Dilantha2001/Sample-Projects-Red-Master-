@@ -46,11 +46,11 @@ export const FAQSection = () => {
 
       {/* Header Info */}
       <div className="pt-8 md:pt-12 px-6 md:px-12 w-full max-w-7xl mx-auto relative z-10 flex justify-between items-center border-b border-zinc-900/60 pb-4">
-        <span className="text-[8px] font-black tracking-[0.3em] text-zinc-500 uppercase">
+        <span className="text-xs font-black tracking-[0.25em] text-zinc-500 uppercase">
           Ecosystem Directory • Frequently Asked Questions
         </span>
-        <span className="text-[8px] font-black tracking-[0.2em] text-zinc-400 uppercase flex items-center gap-1">
-          <HelpCircle size={10} className="text-red-500" />
+        <span className="text-xs font-black tracking-[0.15em] text-zinc-400 uppercase flex items-center gap-1.5">
+          <HelpCircle size={12} className="text-red-500" />
           VERIFIED PROTOCOL SUPPORT
         </span>
       </div>
@@ -61,7 +61,7 @@ export const FAQSection = () => {
         {/* Left Side: Accordion FAQ List (Span 7) */}
         <div className="lg:col-span-7 flex flex-col justify-center h-full space-y-6">
           <div className="space-y-3">
-            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-[9px] font-black tracking-[0.25em] text-red-500 uppercase">
+            <div className="inline-block px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-xs font-black tracking-[0.2em] text-red-500 uppercase">
               SUPPORT PROTOCOLS
             </div>
             <h2 className="text-3xl md:text-5xl font-black font-display uppercase tracking-tighter leading-none">
@@ -73,7 +73,7 @@ export const FAQSection = () => {
           </div>
 
           {/* Accordion list */}
-          <div className="space-y-2.5 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
             {faqData.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
@@ -90,7 +90,7 @@ export const FAQSection = () => {
                     className="w-full p-4 flex justify-between items-center text-left focus:outline-none"
                   >
                     <span
-                      className={`text-xs md:text-sm font-bold uppercase tracking-wide font-display transition-colors duration-300 ${
+                      className={`text-xs md:text-sm lg:text-base font-black uppercase tracking-wide font-display transition-colors duration-300 ${
                         isOpen ? "text-red-400" : "text-zinc-300"
                       }`}
                     >
@@ -116,7 +116,7 @@ export const FAQSection = () => {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 pb-4 pt-1 border-t border-zinc-950 text-[10px] md:text-xs text-zinc-400 leading-relaxed font-sans font-medium">
+                        <div className="px-4 pb-4 pt-1 border-t border-zinc-950 text-xs md:text-sm text-zinc-400 leading-relaxed font-sans font-medium">
                           {item.answer}
                         </div>
                       </motion.div>
@@ -129,7 +129,7 @@ export const FAQSection = () => {
         </div>
 
         {/* Right Side: Elegant Luxury Collage Widget Grid (Span 5) */}
-        <div className="lg:col-span-5 relative w-full h-[400px] md:h-[480px] grid grid-cols-12 grid-rows-12 gap-4">
+        <div className="lg:col-span-5 relative w-full h-[410px] md:h-[480px] grid grid-cols-12 grid-rows-12 gap-4">
           
           {/* Widget 1: Real-time SVG Growth Matrix (Line Graph) (Pos: Row 1-7, Col 1-7) */}
           <motion.div
@@ -138,17 +138,17 @@ export const FAQSection = () => {
           >
             <div className="absolute top-0 right-0 w-[40px] h-[40px] bg-red-500/5 blur-[15px] rounded-full pointer-events-none" />
             <div className="flex justify-between items-center z-10">
-              <span className="text-[7px] font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1">
-                <TrendingUp size={10} className="text-red-500" />
+              <span className="text-xs font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                <TrendingUp size={12} className="text-red-500" />
                 TRANSACTION SCALING
               </span>
-              <span className="text-[8px] font-black text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1 py-0.5 rounded leading-none">
+              <span className="text-[10px] font-black text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded leading-none">
                 +428%
               </span>
             </div>
             
             {/* Custom SVG Line Graph */}
-            <div className="h-[70px] w-full mt-2 relative z-10">
+            <div className="h-[75px] w-full mt-2 relative z-10">
               <svg className="w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
@@ -175,10 +175,10 @@ export const FAQSection = () => {
             </div>
 
             <div className="z-10 mt-2">
-              <h4 className="text-[10px] font-black text-white uppercase tracking-wider font-display">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
                 Throughput Peak
               </h4>
-              <p className="text-[8px] text-zinc-500 leading-normal font-sans">
+              <p className="text-xs text-zinc-500 leading-normal font-sans">
                 Consensus pipeline batch optimization.
               </p>
             </div>
@@ -191,26 +191,26 @@ export const FAQSection = () => {
           >
             <div className="absolute top-0 right-0 w-[40px] h-[40px] bg-red-500/5 blur-[15px] rounded-full pointer-events-none" />
             <div className="flex justify-between items-center">
-              <span className="text-[7px] font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1">
-                <Award size={10} className="text-red-500" />
+              <span className="text-xs font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                <Award size={12} className="text-red-500" />
                 SLA ASSURANCE
               </span>
             </div>
             
-            <div className="my-2 flex items-baseline gap-1">
+            <div className="my-1.5 flex items-baseline gap-1.5">
               <span className="text-2xl font-black text-white tracking-tighter uppercase font-display leading-none">
                 20,000+
               </span>
-              <span className="text-[7px] font-black text-zinc-400 tracking-wider uppercase leading-none">
+              <span className="text-[9px] font-black text-zinc-400 tracking-wider uppercase leading-none">
                 VERIFIED
               </span>
             </div>
 
             <div>
-              <h4 className="text-[9px] font-black text-white uppercase tracking-wider font-display">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
                 Circular Ledgers Secured
               </h4>
-              <p className="text-[8px] text-zinc-500 leading-normal font-sans">
+              <p className="text-xs text-zinc-500 leading-normal font-sans">
                 High-integrity enterprise tracking structures.
               </p>
             </div>
@@ -250,17 +250,17 @@ export const FAQSection = () => {
               </svg>
             </div>
             <div className="relative z-10 flex justify-between items-center">
-              <span className="text-[7px] font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1">
-                <Cpu size={10} className="text-red-500" />
+              <span className="text-xs font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                <Cpu size={12} className="text-red-500" />
                 GAS TRACK
               </span>
             </div>
 
-            <div className="relative z-10 mt-4">
-              <h4 className="text-[9px] font-black text-white uppercase tracking-wider font-display">
+            <div className="relative z-10 mt-3">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
                 Decoupled
               </h4>
-              <p className="text-[8px] text-zinc-500 leading-normal font-sans">
+              <p className="text-xs text-zinc-500 leading-normal font-sans">
                 VTHO pipeline buffered.
               </p>
             </div>
@@ -273,14 +273,14 @@ export const FAQSection = () => {
           >
             <div className="absolute top-0 right-0 w-[40px] h-[40px] bg-red-500/5 blur-[15px] rounded-full pointer-events-none" />
             <div className="flex justify-between items-center">
-              <span className="text-[7px] font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1">
-                <Layers size={10} className="text-red-500" />
+              <span className="text-xs font-black text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                <Layers size={12} className="text-red-500" />
                 L2 PIPELINE
               </span>
               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
             </div>
 
-            <div className="space-y-1.5 font-mono text-[7px] text-zinc-400 mt-2">
+            <div className="space-y-1.5 font-mono text-[10px] text-zinc-400 mt-2">
               <div className="flex justify-between border-b border-zinc-900 pb-0.5">
                 <span>PING:</span>
                 <span className="text-white font-bold">11ms</span>
@@ -296,10 +296,10 @@ export const FAQSection = () => {
             </div>
 
             <div className="mt-2">
-              <h4 className="text-[9px] font-black text-white uppercase tracking-wider font-display">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider font-display">
                 Prestige Gateway
               </h4>
-              <p className="text-[8px] text-zinc-500 leading-normal font-sans">
+              <p className="text-xs text-zinc-500 leading-normal font-sans">
                 Active core nodes routed successfully.
               </p>
             </div>
@@ -310,10 +310,10 @@ export const FAQSection = () => {
 
       {/* Bottom Spacer Row */}
       <div className="pb-8 px-6 md:px-12 w-full max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center gap-3 border-t border-zinc-900/60 pt-4 text-center md:text-left select-none">
-        <span className="text-[8px] font-black uppercase tracking-[0.25em] text-zinc-600">
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-zinc-600">
           SECURE PROTOCOL SUPPORT • SYSTEM OVERLAYS
         </span>
-        <div className="flex items-center gap-6 text-[8px] font-bold text-zinc-500 uppercase tracking-widest">
+        <div className="flex items-center gap-6 text-xs font-bold text-zinc-500 uppercase tracking-widest">
           <span className="hover:text-red-500 transition-colors cursor-default">AUDITED CONTRACTS</span>
           <span>•</span>
           <span className="hover:text-red-500 transition-colors cursor-default">SLA GUARANTEE</span>
