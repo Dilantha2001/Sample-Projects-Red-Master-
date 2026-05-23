@@ -22,4 +22,27 @@
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-zinc-800 rounded-full hover:bg-zinc-700 transition-colors;
   }
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+  }
+  .animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marquee-reverse 35s linear infinite;
+  }
+  .pause-marquee:hover .animate-marquee,
+  .pause-marquee:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
 }

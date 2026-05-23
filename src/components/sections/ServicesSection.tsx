@@ -94,14 +94,14 @@ const PointCallout = ({
 
 export const ServicesSection = () => {
   return (
-    <Section className="bg-black flex flex-col justify-center min-h-[150vh] py-24 px-6 md:px-12 overflow-hidden">
+    <Section className="bg-black flex flex-col justify-between py-10 px-6 md:px-12 overflow-hidden">
       {/* Background Lighting */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-black" />
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-orange-950/20 to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full h-full flex flex-col justify-between min-h-[80vh]">
+      <div className="relative z-10 max-w-7xl mx-auto w-full h-full flex flex-col justify-between">
         {/* Header Area */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
@@ -119,22 +119,22 @@ export const ServicesSection = () => {
         </div>
 
         {/* Central 3D Model Area */}
-        <div className="relative w-full h-[90vh] bg-black flex items-center justify-center">
+        <div className="relative w-full h-[45vh] bg-transparent flex items-center justify-center">
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-zinc-900/50" />
 
           <div className="w-full h-full relative z-10">
             <Canvas shadows camera={{ position: [0, 0, 8], fov: 10 }}>
               <Suspense fallback={null}>
                 <Stage environment={null} intensity={1} castShadow={false}>
-                  <Model scale={15} />
+                  <Model scale={19} />
                 </Stage>
               </Suspense>
-              <OrbitControls autoRotate enableZoom={false} />
+              <OrbitControls autoRotate enableZoom={false} enablePan={false} />
             </Canvas>
           </div>
 
           {/* Left Callout (Relative to Model) */}
-          <div className="absolute left-[15%] top-[60%]">
+          <div className="absolute left-[15%] top-[32%]">
             <PointCallout
               side="left"
               title="Elegant Branding"
@@ -143,7 +143,7 @@ export const ServicesSection = () => {
           </div>
 
           {/* Right Callout - Near 3D Object */}
-          <div className="absolute right-[15%] top-[60%]">
+          <div className="absolute right-[15%] top-[60%] md:top-[32%]">
             <PointCallout
               side="right"
               title="Refined Craftsmanship"

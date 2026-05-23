@@ -89,7 +89,7 @@ export const HeroSection = () => {
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24 bg-amber-400 ">
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           {/* Left Column */}
           <motion.div
@@ -143,7 +143,7 @@ export const HeroSection = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="lg:text-right flex flex-col lg:items-end space-y-12 "
           >
-            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black bg-red-500 leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
+            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
               <span className="block text-zinc-400/80">Creative</span>
               <span className="block text-zinc-500/80">Branding</span>
               <span className="block text-white">Studio</span>

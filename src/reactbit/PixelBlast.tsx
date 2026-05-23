@@ -128,7 +128,7 @@ const createLiquidEffect = (
     }
     `;
   return new Effect("LiquidEffect", fragment, {
-    uniforms: new Map<string, { value: unknown }>([
+    uniforms: new Map<string, THREE.Uniform>([
       ["uTexture", new THREE.Uniform(texture)],
       ["uStrength", new THREE.Uniform(opts?.strength ?? 0.025)],
       ["uTime", new THREE.Uniform(0)],
@@ -319,6 +319,31 @@ void main(){
 
 const MAX_CLICKS = 10;
 
+export interface PixelBlastProps {
+  variant?: "square" | "circle" | "triangle" | "diamond";
+  pixelSize?: number;
+  color?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  antialias?: boolean;
+  patternScale?: number;
+  patternDensity?: number;
+  liquid?: boolean;
+  liquidStrength?: number;
+  liquidRadius?: number;
+  pixelSizeJitter?: number;
+  enableRipples?: boolean;
+  rippleIntensityScale?: number;
+  rippleThickness?: number;
+  rippleSpeed?: number;
+  liquidWobbleSpeed?: number;
+  autoPauseOffscreen?: boolean;
+  speed?: number;
+  transparent?: boolean;
+  edgeFade?: number;
+  noiseAmount?: number;
+}
+
 const PixelBlast = ({
   variant = "square",
   pixelSize = 3,
@@ -342,7 +367,7 @@ const PixelBlast = ({
   transparent = true,
   edgeFade = 0.5,
   noiseAmount = 0,
-}) => {
+}: PixelBlastProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const visibilityRef = useRef({ visible: true });
   const speedRef = useRef(speed);
@@ -354,14 +379,14 @@ const PixelBlast = ({
     material: THREE.ShaderMaterial;
     clock: THREE.Clock;
     clickIx: number;
-    uniforms: Record<string, { value: unknown }>;
+    uniforms: Record<string, any>;
     resizeObserver: ResizeObserver;
     raf: number;
     quad: THREE.Mesh;
     timeOffset: number;
-    composer: unknown;
+    composer: any;
     touch: ReturnType<typeof createTouchTexture> | null;
-    liquidEffect: ReturnType<typeof createLiquidEffect> | null;
+    liquidEffect: any;
   } | null>(null);
   const prevConfigRef = useRef<{
     antialias: boolean;
@@ -514,7 +539,7 @@ const PixelBlast = ({
       }
       if (composer)
         composer.setSize(renderer.domElement.width, renderer.domElement.height);
-      const mapToPixels = (e) => {
+      const mapToPixels = (e: PointerEvent) => {
         const rect = renderer.domElement.getBoundingClientRect();
         const scaleX = renderer.domElement.width / rect.width;
         const scaleY = renderer.domElement.height / rect.height;
@@ -527,14 +552,14 @@ const PixelBlast = ({
           h: renderer.domElement.height,
         };
       };
-      const onPointerDown = (e) => {
+      const onPointerDown = (e: PointerEvent) => {
         const { fx, fy } = mapToPixels(e);
         const ix = threeRef.current?.clickIx ?? 0;
         uniforms.uClickPos.value[ix].set(fx, fy);
         uniforms.uClickTimes.value[ix] = uniforms.uTime.value;
         if (threeRef.current) threeRef.current.clickIx = (ix + 1) % MAX_CLICKS;
       };
-      const onPointerMove = (e) => {
+      const onPointerMove = (e: PointerEvent) => {
         if (!touch) return;
         const { fx, fy, w, h } = mapToPixels(e);
         touch.addTouch({ x: fx / w, y: fy / h });
@@ -602,7 +627,7 @@ const PixelBlast = ({
       if (transparent) t.renderer.setClearAlpha(0);
       else t.renderer.setClearColor(0x000000, 1);
       if (t.liquidEffect) {
-        const uStrength = t.liquidEffect;
+        const uStrength = t.liquidEffect.uniforms.get("uStrength");
         if (uStrength) uStrength.value = liquidStrength;
         const uFreq = t.liquidEffect.uniforms.get("uFreq");
         if (uFreq) uFreq.value = liquidWobbleSpeed;
