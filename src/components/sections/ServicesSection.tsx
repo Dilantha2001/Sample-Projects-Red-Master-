@@ -2,10 +2,11 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Section } from "../ui/Section";
 import { Star } from "lucide-react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stage } from "@react-three/drei";
 import { Suspense } from "react";
 import { Model } from "../3d/Scene";
+import * as THREE from "three";
 
 // Helper Component for the Rotating Circular Text
 const CircularCTA = () => (
@@ -100,9 +101,6 @@ const PointCallout = ({
   </motion.div>
 );
 
-import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-
 const ScrollRotatedModel = () => {
   const groupRef = useRef<THREE.Group>(null);
 
@@ -127,7 +125,8 @@ const ScrollRotatedModel = () => {
 
   return (
     <group ref={groupRef}>
-      <Model scale={19} />
+      {/* Scale එක මුල් කෝඩ් එකේ තිබ්බ ගාණටම (70) හැරෙව්වා */}
+      <Model scale={70} />
     </group>
   );
 };
@@ -138,7 +137,7 @@ export const ServicesSection = () => {
       {/* Background Lighting */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-black" />
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-orange-950/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-black to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full h-full flex flex-col justify-between">
@@ -158,13 +157,15 @@ export const ServicesSection = () => {
           <div className="flex justify-end pt-12" />
         </div>
 
-        {/* Central 3D Model Area */}
-        <div className="relative w-full h-[45vh] bg-transparent flex items-center justify-center">
+        {/* Central 3D Model Area - Height එක vh 55ක් දක්වා වැඩි කර මුළු Area එකම විශාල කරන ලදී */}
+        <div className="relative w-full h-[90vh] bg-transparent flex items-center justify-center">
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-zinc-900/50" />
 
           <div className="w-full h-full relative z-10">
-            <Canvas shadows camera={{ position: [0, 0, 8], fov: 10 }}>
+            {/* කැමරාව ළඟට ගන්න fov එක 2.5 ට අඩු කරන ලදී. position එක [0, 0, 5] කර ළඟට ගන්නා ලදී */}
+            <Canvas shadows camera={{ position: [0, 0, 5], fov: 2.5 }}>
               <Suspense fallback={null}>
+                {/* Stage එකේ Default auto-center එක ඔන් එකේ තියලා, adjustCamera=trueම තැබුවා (නැත්නම් object එක අතුරුදහන් වෙනවා) */}
                 <Stage environment={null} intensity={1} castShadow={false}>
                   <ScrollRotatedModel />
                 </Stage>
@@ -198,7 +199,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Footer Stats Area */}
-        <div className="flex flex-col md:flex-row items-end justify-between gap-12 pt-12 border-t border-zinc-900">
+        <div className="flex flex-col md:flex-row items-end justify-between gap-12 pt-12 border-t ">
           <div className="flex gap-16">
             <div className="space-y-1">
               <div className="text-4xl font-bold tracking-tighter text-white">
