@@ -78,7 +78,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Background Image */}
-      <div className="absolute inset-0 z-2 bg-black flex items-start justify-center overflow-hidden">
+      <div className="absolute inset-0 z-[2] bg-black flex items-start justify-center overflow-hidden">
         <div className="relative w-full h-[85vh] overflow-hidden">
           <img
             ref={bgRef}

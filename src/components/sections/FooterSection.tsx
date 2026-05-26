@@ -19,7 +19,7 @@ export const FooterSection = () => {
       </div>
 
       {/* Subtle Background Texture */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-1">
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none z-[1]">
         <div className="h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
       </div>
 

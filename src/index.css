@@ -26,11 +26,15 @@
     display: flex;
     width: max-content;
     animation: marquee 35s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .animate-marquee-reverse {
     display: flex;
     width: max-content;
     animation: marquee-reverse 35s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .pause-marquee:hover .animate-marquee,
   .pause-marquee:hover .animate-marquee-reverse {

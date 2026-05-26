@@ -7,6 +7,7 @@ interface TeamMember {
   role: string;
   code: string;
   name: string;
+  image: string;
   details: string;
 }
 
@@ -15,18 +16,21 @@ const teamMembers: TeamMember[] = [
     role: "CORE ENGINE BUILDER",
     code: "01 / PROTOCOL",
     name: "Alexander Vance",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600",
     details: "Former distributed ledger specialist. Designed low-latency Layer-2 execution channels and state channels.",
   },
   {
     role: "UX & INTERACTIVE DESIGN",
     code: "02 / AESTHETICS",
     name: "Elena Rostova",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600",
     details: "Crafted interfaces for global luxury brands. Specializes in micro-interactions, canvas grids, and HSL palettes.",
   },
   {
     role: "SMART CONTRACT AUDITOR",
     code: "03 / INTEGRITY",
     name: "Dr. Marcus Thorne",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600",
     details: "Cryptographic researcher. Expert in zero-knowledge proof mechanics and immutable registry optimization.",
   },
 ];
@@ -121,14 +125,15 @@ export const TeamManifestoSection = () => {
                   <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
                 </div>
 
-                {/* Styled Geometric Vector Frame Placeholder instead of flat photo */}
-                <div className="flex-1 my-3 rounded-lg border border-zinc-900/60 bg-black/40 flex items-center justify-center overflow-hidden relative group">
-                  <div className="absolute inset-0 bg-gradient-to-t from-red-500/5 to-transparent pointer-events-none" />
-                  <svg width="40" height="40" viewBox="0 0 100 100" className="text-zinc-800 opacity-60 group-hover:text-red-500 group-hover:opacity-90 transition-all duration-500">
-                    <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                    <line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" strokeWidth="1" />
-                    <line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" strokeWidth="1" />
-                  </svg>
+                {/* Team Member Image */}
+                <div className="flex-1 my-3 rounded-lg border border-zinc-900/60 bg-zinc-950 flex items-center justify-center overflow-hidden relative group">
+                  <div className="absolute inset-0 bg-red-950/20 pointer-events-none" />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80" />
                 </div>
 
                 {/* Info Text */}

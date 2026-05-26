@@ -30,7 +30,7 @@ export const EnterpriseSection = () => {
       </div>
       {/* Flowing Light Effects */}
       <div
-        className="absolute inset-0 z-1 overflow-hidden pointer-events-none"
+        className="absolute inset-0 z-[1] overflow-hidden pointer-events-none"
         style={{ height: "600px" }}
       >
         <motion.div
