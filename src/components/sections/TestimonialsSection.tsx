@@ -99,7 +99,7 @@ export const TestimonialsSection = () => {
   );
 
   return (
-    <Section className="bg-black flex flex-col justify-between py-12 px-0 overflow-hidden relative h-screen snap-start">
+    <Section className="bg-black flex flex-col justify-between py-12 px-0 overflow-hidden relative min-h-screen lg:h-screen snap-start">
       {/* Subtle Background Glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-red-900/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[50%] h-[50%] bg-red-900/5 blur-[120px] rounded-full pointer-events-none" />

@@ -84,7 +84,7 @@ export const ScrollNav: React.FC = () => {
   const offsetPercent = activeIndex !== -1 ? (activeIndex / (navItems.length - 1)) * 100 : 0;
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-5 select-none pointer-events-auto">
+    <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-5 select-none pointer-events-auto">
       {/* Sleek Vertical Connection Track */}
       <div className="absolute right-[5.5px] top-1 bottom-1 w-[1px] bg-zinc-800/60 rounded-full">
         {/* Glow Active Fill */}

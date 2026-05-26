@@ -142,24 +142,7 @@ export const FooterSection = () => {
         </div>
 
         {/* Bottom Bar: Crisis Line / Support */}
-        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-zinc-900">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center">
-              <Shield size={20} className="text-white" />
-            </div>
-            <div className="text-left">
-              <div className="text-[10px] font-bold tracking-widest text-zinc-500 uppercase">
-                Support Line
-              </div>
-              <div className="text-xs font-bold text-white">
-                DIAL 988 then Press 1
-              </div>
-            </div>
-          </div>
-          <div className="text-zinc-500 text-[10px] font-medium tracking-widest uppercase">
-            In Crisis? Call the National Suicide Prevention Lifeline
-          </div>
-        </div>
+       
       </div>
     </Section>
   );

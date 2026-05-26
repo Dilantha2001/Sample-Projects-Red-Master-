@@ -41,10 +41,9 @@ export const HeroSection = () => {
       },
     });
 
-    // Branding text zooms into camera and fades out
+    // Branding text zooms into camera
     gsap.to(brandingTextRef.current, {
       scale: 1.6,
-      opacity: 0,
       yPercent: -15,
       ease: "power2.out",
       scrollTrigger: {
@@ -58,7 +57,7 @@ export const HeroSection = () => {
 
   return (
     <Section id="hero" className="bg-black">
-      <div ref={containerRef} className="w-full h-full relative">
+      <div ref={containerRef} className="w-full h-[900px] relative">
       {/* PixelBlast Background */}
       <div className="absolute inset-0 z-[1]">
         <PixelBlast
@@ -78,26 +77,27 @@ export const HeroSection = () => {
       </div>
 
       {/* Background Image */}
-      <div className="absolute inset-0 z-[2] bg-black flex items-start justify-center overflow-hidden">
-        <div className="relative w-full h-[85vh] overflow-hidden">
-          <img
-            ref={bgRef}
-            src="./assets/background.png"
-            alt="Hero Background"
-            className="h-full w-full object-cover"
-          />
-          <img
-            ref={personRef}
-            src="./assets/person.png"
-            alt="Person Silhouette"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain z-[5] opacity-90"
-          />
+      <div className="absolute inset-0 z-[2] flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              ref={bgRef}
+              src="./assets/background.png"
+              alt="Hero Background"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+            
+            <img
+              ref={personRef}
+              src="./assets/person.png"
+              alt="Person Silhouette"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain z-[5] opacity-90"
+            />
 
           {/* Subtle Red Glow behind the person */}
           <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-1/3 h-1/2 bg-red-600/20 blur-[100px] rounded-full z-[3] pointer-events-none" />
 
           {/* Main Prominent Branding Text strictly on top of the image area */}
-          <div className="absolute inset-0 flex items-end justify-center z-[4] select-none pointer-events-none">
+          <div className="absolute inset-x-0 top-0 bottom-[-45px] flex items-end justify-center z-[4] select-none pointer-events-none">
             <motion.span
               ref={brandingTextRef}
               initial={{ opacity: 0, y: 20 }}
@@ -112,7 +112,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Subtler Background Text Layers */}
-      <div className="pointer-events-none absolute inset-0 z-[1] flex flex-col justify-around overflow-hidden opacity-[0.03] select-none">
+      <div className="pointer-events-none absolute  inset-0 z-[1] flex flex-col justify-around overflow-hidden opacity-[0.03] select-none">
         <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
           BRANDING
         </span>
@@ -125,8 +125,8 @@ export const HeroSection = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 flex justify-center py-12">
-        <div className="flex items-center gap-4 text-2xl font-medium tracking-wide text-zinc-300">
+      <nav className="relative z-10 font-bold flex justify-center py-12">
+        <div className="flex items-center gap-4 text-2xl font-large tracking-wide ">
           <a href="#" className="hover:text-white transition-colors">
             Works
           </a>
@@ -145,8 +145,8 @@ export const HeroSection = () => {
         </div>
       </nav>
 
-      <main className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+      <main className="relative z-10 w-full max-w-none px-6 sm:px-12 lg:px-20 xl:px-32 pt-12 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start w-full">
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -197,39 +197,21 @@ export const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="lg:text-right flex flex-col lg:items-end space-y-12 "
+            className="lg:text-right flex flex-col lg:items-end space-y-12"
           >
-            <h1 className="text-6xl md:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
-              <span className="block text-zinc-400/80">Creative</span>
-              <span className="block text-zinc-500/80">Branding</span>
+            <h1 className="text-6xl md:text-8xl xl:text-9xl text-white leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
+              <span className="block text-white">Creative</span>
+              <span className="block text-white">Branding</span>
               <span className="block text-white">Studio</span>
             </h1>
 
-            <div className="max-w-xs lg:text-right space-y-6">
-              <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-lg">
-                From innovative marketing strategies to operational excellence,
-                we provide expert guidance to help your business grow, scale,
-                and thrive.
-              </p>
-              <div className="space-y-1">
-                <div className="text-sm font-semibold tracking-tight">
-                  Your Partner in
-                </div>
-                <div className="text-sm font-semibold tracking-tight">
-                  Business Growth
-                </div>
-              </div>
-              <p className="text-[10px] text-zinc-400 leading-relaxed italic">
-                / From innovative marketing strategies to operational
-                excellence, we provide expert /
-              </p>
-            </div>
+            
           </motion.div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="absolute bottom-12 left-0 w-full z-10 px-6">
+      <footer className="absolute pt-60 w-full z-10 px-6">
         <div className="mx-auto max-w-7xl flex flex-col items-center gap-8">
           <div className="flex flex-wrap justify-center gap-4 text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-300 uppercase">
             <span>UI/UX</span>
@@ -242,9 +224,7 @@ export const HeroSection = () => {
             <span className="text-zinc-800">|</span>
             <span>Branding</span>
           </div>
-          <div className="text-[10px] font-medium text-zinc-500 text-center">
-            © 2026
-          </div>
+         
         </div>
       </footer>
       </div>

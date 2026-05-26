@@ -63,46 +63,58 @@ export default function App() {
 
     const showcasePanels = gsap.utils.toArray(".showcase-panel") as HTMLElement[];
 
-    // Pre-position showcase panels:
-    // Panel 1 (Who We Are) is base and fully visible.
-    // Panel 2 (Team Manifesto) slides in from LEFT.
-    gsap.set(showcasePanels[1], {
-      xPercent: -100,
-    });
-    // Panel 3 (Testimonials) slides in from the right as a solid sheet
-    gsap.set(showcasePanels[2], {
-      xPercent: 100,
+    const mm = gsap.matchMedia();
+
+    // Responsive setup: Pin and slide overlay only on desktop screen sizes (lg: min-width: 1024px)
+    mm.add("(min-width: 1024px)", () => {
+      // Pre-position showcase panels:
+      // Panel 1 (Who We Are) is base and fully visible.
+      // Panel 2 (Team Manifesto) slides in from LEFT.
+      gsap.set(showcasePanels[1], {
+        xPercent: -100,
+      });
+      // Panel 3 (Testimonials) slides in from the right as a solid sheet
+      gsap.set(showcasePanels[2], {
+        xPercent: 100,
+      });
+
+      // Pinned Middle Showcase Timeline with spacing scroll buffers to prevent overlaps
+      const showcaseTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".panels-container",
+          start: "top top",
+          end: () => `+=${showcasePanels.length * 120}%`, // larger scroll area for spacious, smooth experience
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+
+      // 1. Team Manifesto slides in from LEFT
+      showcaseTl.to(showcasePanels[1], {
+        xPercent: 0,
+        ease: "power1.inOut",
+      });
+
+      // Scroll pause buffer - keeps Team Manifesto settled and completely visible
+      showcaseTl.to({}, { duration: 0.8 });
+
+      // 2. Testimonials slides in from the right as a solid overlay
+      showcaseTl.to(showcasePanels[2], {
+        xPercent: 0,
+        ease: "power1.inOut",
+      });
+
+      // Scroll pause buffer - keeps Testimonials settled and completely visible
+      showcaseTl.to({}, { duration: 0.8 });
     });
 
-    // Pinned Middle Showcase Timeline with spacing scroll buffers to prevent overlaps
-    const showcaseTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".panels-container",
-        start: "top top",
-        end: () => `+=${showcasePanels.length * 120}%`, // larger scroll area for spacious, smooth experience
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-      },
+    mm.add("(max-width: 1023px)", () => {
+      // Mobile & tablet reset: Clear all inline set transformations so panels scroll vertically
+      gsap.set(showcasePanels, {
+        clearProps: "all",
+      });
     });
-
-    // 1. Team Manifesto slides in from LEFT
-    showcaseTl.to(showcasePanels[1], {
-      xPercent: 0,
-      ease: "power1.inOut",
-    });
-
-    // Scroll pause buffer - keeps Team Manifesto settled and completely visible
-    showcaseTl.to({}, { duration: 0.8 });
-
-    // 2. Testimonials slides in from the right as a solid overlay
-    showcaseTl.to(showcasePanels[2], {
-      xPercent: 0,
-      ease: "power1.inOut",
-    });
-
-    // Scroll pause buffer - keeps Testimonials settled and completely visible
-    showcaseTl.to({}, { duration: 0.8 });
 
     // Page top micro progress bar linked to total page scroll height
     gsap.to(".progress-bar", {
@@ -116,17 +128,7 @@ export default function App() {
       },
     });
 
-    // Fixed Decorative Star Rotation (Scroll triggered)
-    gsap.to(".luxury-star", {
-      rotation: 720,
-      ease: "none",
-      scrollTrigger: {
-        trigger: scrollContainerRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1, // Smooth interaction delay එකක් දෙනවා කැරකෙද්දී
-      },
-    });
+
   }, { scope: scrollContainerRef });
 
   return (
@@ -147,14 +149,14 @@ export default function App() {
         <EnterpriseSection />
 
         {/* Pinned Showcase container in the middle */}
-        <div className="panels-container relative w-full h-screen overflow-hidden z-10 bg-black">
-          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-10">
+        <div className="panels-container relative w-full h-auto lg:h-screen lg:overflow-hidden z-10 bg-black">
+          <div className="showcase-panel w-full h-auto lg:h-full lg:absolute lg:inset-0 bg-black z-10">
             <WhoWeAreSection />
           </div>
-          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-[11]">
+          <div className="showcase-panel w-full h-auto lg:h-full lg:absolute lg:inset-0 bg-black z-[11]">
             <TeamManifestoSection />
           </div>
-          <div className="showcase-panel w-full h-full absolute inset-0 bg-black z-[12]">
+          <div className="showcase-panel w-full h-auto lg:h-full lg:absolute lg:inset-0 bg-black z-[12]">
             <TestimonialsSection />
           </div>
         </div>
@@ -166,14 +168,7 @@ export default function App() {
         <FooterSection />
       </main>
 
-      {/* Fixed Luxury Interactive Star */}
-      <div className="luxury-star fixed bottom-8 right-8 z-50 text-zinc-400 opacity-40 pointer-events-none mix-blend-difference">
-        <Star
-          size={28}
-          fill="currentColor"
-          strokeWidth={0}
-        />
-      </div>
+
     </div>
   );
 }

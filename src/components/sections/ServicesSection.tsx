@@ -221,7 +221,6 @@ export const ServicesSection = () => {
           </div>
 
           <div className="flex items-center gap-3 text-red-500">
-            <Star size={12} fill="currentColor" />
             <span className="text-[8px] font-bold tracking-[0.5em] uppercase text-zinc-600">
               Established 2014
             </span>

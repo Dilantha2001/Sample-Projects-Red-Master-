@@ -7,7 +7,7 @@ import PixelBlast from "../../reactbit/PixelBlast";
 export const EnterpriseSection = () => {
   return (
     <Section id="enterprise" className="bg-black flex flex-col">
-      <div className="absolute inset-0 z-0" style={{ height: "600px" }}>
+      <div className="absolute inset-0 z-0" style={{ height: "800px" }}>
         <PixelBlast
           variant="square"
           pixelSize={4}
@@ -31,7 +31,7 @@ export const EnterpriseSection = () => {
       {/* Flowing Light Effects */}
       <div
         className="absolute inset-0 z-[1] overflow-hidden pointer-events-none"
-        style={{ height: "600px" }}
+        style={{ height: "800px" }}
       >
         <motion.div
           animate={{
@@ -62,7 +62,7 @@ export const EnterpriseSection = () => {
       </div>
       <main
         className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6"
-        style={{ height: "600px" }}
+        style={{ height: "800px" }}
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ export const EnterpriseSection = () => {
       {/* Partners Section */}
       <footer
         className="relative z-10 py-12 px-12"
-        style={{ marginTop: "600px" }}
+        style={{ marginTop: "800px" }}
       >
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
           <div className="flex items-center gap-2">

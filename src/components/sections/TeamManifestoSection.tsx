@@ -65,7 +65,7 @@ const capabilities: CapabilityCard[] = [
 
 export const TeamManifestoSection = () => {
   return (
-    <Section id="manifesto" className="bg-black flex flex-col justify-between relative overflow-hidden h-screen w-full snap-start select-none">
+    <Section id="manifesto" className="bg-black flex flex-col justify-between relative overflow-hidden min-h-screen lg:h-screen w-full snap-start select-none py-12 lg:py-0">
       
       {/* Background Decorative Matrix Overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.03)_0%,transparent_80%)] pointer-events-none" />

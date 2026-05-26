@@ -34,7 +34,6 @@ export const ProjectsSection = () => {
         <div className="flex items-center justify-between border-b border-zinc-900 pb-8">
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-red-500">
-              <Star size={14} fill="currentColor" />
               <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Showcase</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black font-display uppercase tracking-tighter">
@@ -70,9 +69,8 @@ export const ProjectsSection = () => {
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               </div>
 
               {/* Content Overlay */}
