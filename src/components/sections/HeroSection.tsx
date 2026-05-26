@@ -28,18 +28,7 @@ export const HeroSection = () => {
       },
     });
 
-    // Parallax person moving up slightly
-    gsap.to(personRef.current, {
-      yPercent: -8,
-      scale: 1.05,
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+
 
     // Branding text zooms into camera
     gsap.to(brandingTextRef.current, {
@@ -57,27 +46,27 @@ export const HeroSection = () => {
 
   return (
     <Section id="hero" className="bg-black">
-      <div ref={containerRef} className="w-full h-[900px] relative">
-      {/* PixelBlast Background */}
-      <div className="absolute inset-0 z-[1]">
-        <PixelBlast
-          color="#8B0000"
-          pixelSize={4}
-          patternScale={1.5}
-          patternDensity={0.8}
-          enableRipples={true}
-          rippleIntensityScale={0.8}
-          rippleThickness={0.15}
-          rippleSpeed={0.4}
-          edgeFade={0.3}
-          speed={0.3}
-          className={undefined}
-          style={undefined}
-        />
-      </div>
+      <div ref={containerRef} className="w-full h-[750px] sm:h-[850px] lg:h-[900px] relative">
+        {/* PixelBlast Background */}
+        <div className="absolute inset-0 z-[1]">
+          <PixelBlast
+            color="#8B0000"
+            pixelSize={4}
+            patternScale={1.5}
+            patternDensity={0.8}
+            enableRipples={true}
+            rippleIntensityScale={0.8}
+            rippleThickness={0.15}
+            rippleSpeed={0.4}
+            edgeFade={0.3}
+            speed={0.3}
+            className={undefined}
+            style={undefined}
+          />
+        </div>
 
-      {/* Background Image */}
-      <div className="absolute inset-0 z-[2] flex items-center justify-center overflow-hidden">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 z-[2] flex items-center justify-center overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
             <img
               ref={bgRef}
@@ -86,147 +75,136 @@ export const HeroSection = () => {
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
             
-            <img
-              ref={personRef}
-              src="./assets/person.png"
-              alt="Person Silhouette"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain z-[5] opacity-90"
-            />
+            {/* Person Visual Wrapper mapped strictly to the bottom */}
+            <div className="absolute inset-x-0 bottom-0 top-0 flex items-end justify-center z-[5] pointer-events-none">
+              <img
+                ref={personRef}
+                src="./assets/person.png"
+                alt="Person Silhouette"
+                className="h-[75%] sm:h-[85%] lg:h-[90%] w-auto object-contain object-bottom opacity-90 pointer-events-auto vertical-align-bottom block"
+              />
+            </div>
 
-          {/* Subtle Red Glow behind the person */}
-          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-1/3 h-1/2 bg-red-600/20 blur-[100px] rounded-full z-[3] pointer-events-none" />
+            {/* Subtle Red Glow behind the person */}
+            <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-1/3 h-1/2 bg-red-600/20 blur-[100px] rounded-full z-[3] pointer-events-none" />
 
-          {/* Main Prominent Branding Text strictly on top of the image area */}
-          <div className="absolute inset-x-0 top-0 bottom-[-45px] flex items-end justify-center z-[4] select-none pointer-events-none">
-            <motion.span
-              ref={brandingTextRef}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="text-[18vw] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] inline-block"
+            {/* Main Prominent Branding Text strictly on top of the image area */}
+            <div className="absolute inset-x-0 top-0 bottom-[-45px] flex items-end justify-center z-[4] select-none pointer-events-none">
+              <motion.span
+                ref={brandingTextRef}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="text-[18vw] font-black leading-none tracking-tighter text-white drop-shadow-[0_0_30px_rgba(0,0,0,0.5)] inline-block"
+              >
+                BRANDING
+              </motion.span>
+            </div>
+          </div>
+        </div>
+
+        {/* Subtler Background Text Layers */}
+        <div className="pointer-events-none absolute inset-0 z-[1] flex flex-col justify-around overflow-hidden opacity-[0.03] select-none">
+          <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
+            BRANDING
+          </span>
+          <span className="text-[25vw] font-black leading-none tracking-tighter self-end text-white">
+            BRANDING
+          </span>
+          <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
+            BRANDING
+          </span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="relative z-10 font-bold flex justify-center py-6 md:py-12">
+          <div className="flex items-center gap-2 sm:gap-4 text-sm sm:text-lg md:text-2xl font-large tracking-wide">
+            <a href="#" className="hover:text-white transition-colors">Works</a>
+            <span className="text-white">|</span>
+            <a href="#" className="hover:text-white transition-colors">Services</a>
+            <span className="text-white">|</span>
+            <a href="#" className="hover:text-white transition-colors">About</a>
+            <span className="text-white">|</span>
+            <a href="#" className="hover:text-white transition-colors">Contact</a>
+          </div>
+        </nav>
+
+        {/* Content Main Body */}
+        <main className="relative z-10 w-full max-w-none px-6 sm:px-12 lg:px-20 xl:px-32 pt-4 md:pt-12 pb-12 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start w-full">
+            {/* Left Column */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8"
             >
-              BRANDING
-            </motion.span>
-          </div>
-        </div>
-      </div>
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight max-w-md drop-shadow-2xl">
+                  UNLOCK YOUR BUSINESS POTENTIAL WITH OUR EXPERT SOLUTIONS.
+                </h2>
+                <p className="text-zinc-200 text-sm max-w-xs leading-relaxed drop-shadow-lg">
+                  From innovative marketing strategies to operational excellence,
+                  we provide expert guidance to help your business grow, scale,
+                  and thrive.
+                </p>
+              </div>
 
-      {/* Subtler Background Text Layers */}
-      <div className="pointer-events-none absolute  inset-0 z-[1] flex flex-col justify-around overflow-hidden opacity-[0.03] select-none">
-        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
-          BRANDING
-        </span>
-        <span className="text-[25vw] font-black leading-none tracking-tighter self-end text-white">
-          BRANDING
-        </span>
-        <span className="text-[25vw] font-black leading-none tracking-tighter text-white">
-          BRANDING
-        </span>
-      </div>
+              <button className="group flex flex-col items-start gap-1">
+                <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-300 group-hover:text-white transition-colors">
+                  READ MORE
+                </span>
+                <div className="h-[1px] w-12 bg-white/50 group-hover:w-16 transition-all duration-300" />
+              </button>
 
-      {/* Navigation */}
-      <nav className="relative z-10 font-bold flex justify-center py-12">
-        <div className="flex items-center gap-4 text-2xl font-large tracking-wide ">
-          <a href="#" className="hover:text-white transition-colors">
-            Works
-          </a>
-          <span className="text-white">|</span>
-          <a href="#" className="hover:text-white transition-colors">
-            Services
-          </a>
-          <span className="text-white">|</span>
-          <a href="#" className="hover:text-white transition-colors">
-            About
-          </a>
-          <span className="text-white">|</span>
-          <a href="#" className="hover:text-white transition-colors">
-            Contact
-          </a>
-        </div>
-      </nav>
-
-      <main className="relative z-10 w-full max-w-none px-6 sm:px-12 lg:px-20 xl:px-32 pt-12 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start w-full">
-          {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
-          >
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight max-w-md drop-shadow-2xl">
-                UNLOCK YOUR BUSINESS POTENTIAL WITH OUR EXPERT SOLUTIONS.
-              </h2>
-              <p className="text-zinc-200 text-sm max-w-xs leading-relaxed drop-shadow-lg">
-                From innovative marketing strategies to operational excellence,
-                we provide expert guidance to help your business grow, scale,
-                and thrive.
-              </p>
-            </div>
-
-            <button className="group flex flex-col items-start gap-1">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-300 group-hover:text-white transition-colors">
-                READ MORE
-              </span>
-              <div className="h-[1px] w-12 bg-white/50 group-hover:w-16 transition-all duration-300" />
-            </button>
-
-            <div className="pt-12 flex gap-16">
-              <div className="space-y-1">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter">
-                  472+
+              <div className="pt-6 md:pt-12 flex gap-8 sm:gap-16">
+                <div className="space-y-1">
+                  <div className="text-4xl md:text-5xl font-bold tracking-tighter">472+</div>
+                  <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
+                    Expert solutions
+                  </div>
                 </div>
-                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
-                  Expert solutions
+                <div className="space-y-1">
+                  <div className="text-4xl md:text-5xl font-bold tracking-tighter">597+</div>
+                  <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
+                    Enterprises to Thrive
+                  </div>
                 </div>
               </div>
-              <div className="space-y-1">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter">
-                  597+
-                </div>
-                <div className="text-[10px] font-medium tracking-widest text-zinc-300 uppercase">
-                  Enterprises to Thrive
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Right Column */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="lg:text-right flex flex-col lg:items-end space-y-12"
-          >
-            <h1 className="text-6xl md:text-8xl xl:text-9xl text-white leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
-              <span className="block text-white">Creative</span>
-              <span className="block text-white">Branding</span>
-              <span className="block text-white">Studio</span>
-            </h1>
-
-            
-          </motion.div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="absolute pt-60 w-full z-10 px-6">
-        <div className="mx-auto max-w-7xl flex flex-col items-center gap-8">
-          <div className="flex flex-wrap justify-center gap-4 text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-300 uppercase">
-            <span>UI/UX</span>
-            <span className="text-zinc-800">|</span>
-            <span>Website Design</span>
-            <span className="text-zinc-800">|</span>
-            <span>Business Development</span>
-            <span className="text-zinc-800">|</span>
-            <span>Ads Campaign</span>
-            <span className="text-zinc-800">|</span>
-            <span>Branding</span>
+            {/* Right Column */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="lg:text-right flex flex-col lg:items-end space-y-12"
+            >
+              <h1 className="text-5xl sm:text-6xl md:text-8xl xl:text-9xl text-white leading-[0.85] tracking-tighter uppercase drop-shadow-2xl">
+                <span className="block text-white">Creative</span>
+                <span className="block text-white">Branding</span>
+                <span className="block text-white">Studio</span>
+              </h1>
+            </motion.div>
           </div>
-         
-        </div>
-      </footer>
+        </main>
+
+        {/* Footer */}
+        <footer className="absolute bottom-6 left-0 right-0 z-10 px-6">
+          <div className="mx-auto max-w-7xl flex flex-col items-center gap-8">
+            <div className="flex flex-wrap justify-center gap-4 text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-300 uppercase">
+              <span>UI/UX</span>
+              <span className="text-zinc-800">|</span>
+              <span>Website Design</span>
+              <span className="text-zinc-800">|</span>
+              <span>Business Development</span>
+              <span className="text-zinc-800">|</span>
+              <span>Ads Campaign</span>
+              <span className="text-zinc-800">|</span>
+              <span>Branding</span>
+            </div>
+          </div>
+        </footer>
       </div>
     </Section>
   );
